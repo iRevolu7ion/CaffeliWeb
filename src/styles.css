@@ -1,0 +1,109 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-ink: var(--ink);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(0.975 0.012 85);      /* warm cream */
+  --foreground: oklch(0.22 0.025 150);       /* deep ink green */
+
+  --cream: oklch(0.975 0.012 85);
+  --sand: oklch(0.94 0.018 80);
+  --forest: oklch(0.32 0.045 155);
+  --forest-deep: oklch(0.24 0.04 155);
+  --ink: oklch(0.18 0.02 150);
+
+  --card: oklch(0.98 0.008 85);
+  --card-foreground: var(--foreground);
+
+  --primary: var(--forest);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--forest-deep);
+  --muted: oklch(0.93 0.015 80);
+  --muted-foreground: oklch(0.45 0.02 150);
+  --accent: var(--sand);
+  --accent-foreground: var(--forest-deep);
+  --border: oklch(0.88 0.018 80);
+  --ring: var(--forest);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --input: var(--border);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .fade-up-delay-1 { animation-delay: 0.1s; }
+  .fade-up-delay-2 { animation-delay: 0.25s; }
+  .fade-up-delay-3 { animation-delay: 0.4s; }
+  .fade-up-delay-4 { animation-delay: 0.55s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
