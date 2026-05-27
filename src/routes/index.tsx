@@ -97,7 +97,7 @@ function Nav({ onOrder }: { onOrder: () => void }) {
   );
 }
 
-function Hero() {
+function Hero({ onOrder }: { onOrder: () => void }) {
   return (
     <section className="px-4 sm:px-6 lg:px-10 pt-8 pb-24">
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
@@ -120,12 +120,12 @@ function Hero() {
               Descubre nuestra colección de postres boutique diseñados para deleitar.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href="#cakes"
+              <button
+                onClick={onOrder}
                 className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-7 py-3.5 text-sm hover:bg-forest-deep transition-all hover:-translate-y-0.5"
               >
                 Ordenar ahora
-              </a>
+              </button>
               <a
                 href="#gallery"
                 className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
