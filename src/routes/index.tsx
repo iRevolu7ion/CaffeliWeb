@@ -50,21 +50,23 @@ export const Route = createFileRoute("/")({
 const WHATSAPP = "https://wa.me/525512345678?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 function Index() {
+  const [orderOpen, setOrderOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <Hero />
+      <Nav onOrder={() => setOrderOpen(true)} />
+      <Hero onOrder={() => setOrderOpen(true)} />
       <About />
-      <Custom />
-      <CakesOfTheDay />
+      <Custom onOrder={() => setOrderOpen(true)} />
+      <CakesOfTheDay onOrder={() => setOrderOpen(true)} />
       <Gallery />
       <Testimonials />
       <Footer />
+      <OrderModal open={orderOpen} onOpenChange={setOrderOpen} />
     </div>
   );
 }
 
-function Nav() {
+function Nav({ onOrder }: { onOrder: () => void }) {
   const links = [
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
