@@ -279,7 +279,7 @@ type Cake = {
   tag: string;
 };
 
-function CakesOfTheDay({ onOrder }: { onOrder: () => void }) {
+function CakesOfTheDay(_props: { onOrder: () => void }) {
   const cakes: Cake[] = [
     { name: "Chocolate Noir", desc: "Ganache de cacao 70% y frutos rojos frescos.", price: "$640", img: cake1, tag: "Hoy" },
     { name: "Pistacho & Rosa", desc: "Bizcocho de pistacho siciliano y flores comestibles.", price: "$720", img: cake2, tag: "Edición limitada" },
