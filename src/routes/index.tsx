@@ -86,14 +86,12 @@ function Nav({ onOrder }: { onOrder: () => void }) {
             </a>
           ))}
         </nav>
-        <a
-          href={WHATSAPP}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={onOrder}
           className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-2.5 text-sm hover:bg-forest-deep transition-colors"
         >
           Ordenar
-        </a>
+        </button>
       </div>
     </header>
   );
