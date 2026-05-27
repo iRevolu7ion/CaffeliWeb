@@ -225,7 +225,7 @@ function About() {
   );
 }
 
-function Custom() {
+function Custom({ onOrder }: { onOrder: () => void }) {
   return (
     <section id="custom" className="px-4 sm:px-6 lg:px-10 pb-28">
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-forest text-primary-foreground p-8 sm:p-14 lg:p-20 grid lg:grid-cols-2 gap-14 items-center overflow-hidden relative">
