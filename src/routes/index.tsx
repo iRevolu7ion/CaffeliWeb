@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { OrderModal } from "@/components/OrderModal";
 import {
   Instagram,
   Facebook,
@@ -48,21 +50,23 @@ export const Route = createFileRoute("/")({
 const WHATSAPP = "https://wa.me/525512345678?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 function Index() {
+  const [orderOpen, setOrderOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <Hero />
+      <Nav onOrder={() => setOrderOpen(true)} />
+      <Hero onOrder={() => setOrderOpen(true)} />
       <About />
-      <Custom />
-      <CakesOfTheDay />
+      <Custom onOrder={() => setOrderOpen(true)} />
+      <CakesOfTheDay onOrder={() => setOrderOpen(true)} />
       <Gallery />
       <Testimonials />
       <Footer />
+      <OrderModal open={orderOpen} onOpenChange={setOrderOpen} />
     </div>
   );
 }
 
-function Nav() {
+function Nav({ onOrder }: { onOrder: () => void }) {
   const links = [
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
@@ -82,20 +86,18 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <a
-          href={WHATSAPP}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={onOrder}
           className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-2.5 text-sm hover:bg-forest-deep transition-colors"
         >
           Ordenar
-        </a>
+        </button>
       </div>
     </header>
   );
 }
 
-function Hero() {
+function Hero({ onOrder }: { onOrder: () => void }) {
   return (
     <section className="px-4 sm:px-6 lg:px-10 pt-8 pb-24">
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
@@ -118,12 +120,12 @@ function Hero() {
               Descubre nuestra colección de postres boutique diseñados para deleitar.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href="#cakes"
+              <button
+                onClick={onOrder}
                 className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-7 py-3.5 text-sm hover:bg-forest-deep transition-all hover:-translate-y-0.5"
               >
                 Ordenar ahora
-              </a>
+              </button>
               <a
                 href="#gallery"
                 className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
@@ -223,7 +225,7 @@ function About() {
   );
 }
 
-function Custom() {
+function Custom({ onOrder }: { onOrder: () => void }) {
   return (
     <section id="custom" className="px-4 sm:px-6 lg:px-10 pb-28">
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-forest text-primary-foreground p-8 sm:p-14 lg:p-20 grid lg:grid-cols-2 gap-14 items-center overflow-hidden relative">
@@ -247,14 +249,12 @@ function Custom() {
               </li>
             ))}
           </ul>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            onClick={onOrder}
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-cream text-forest-deep px-7 py-3.5 text-sm hover:bg-sand transition-colors"
           >
-            <MessageCircle className="w-4 h-4" /> Cotizar por WhatsApp
-          </a>
+            <MessageCircle className="w-4 h-4" /> Cotizar pedido
+          </button>
         </div>
         <div className="aspect-square rounded-[1.5rem] overflow-hidden">
           <img
@@ -279,7 +279,7 @@ type Cake = {
   tag: string;
 };
 
-function CakesOfTheDay() {
+function CakesOfTheDay(_props: { onOrder: () => void }) {
   const cakes: Cake[] = [
     { name: "Chocolate Noir", desc: "Ganache de cacao 70% y frutos rojos frescos.", price: "$640", img: cake1, tag: "Hoy" },
     { name: "Pistacho & Rosa", desc: "Bizcocho de pistacho siciliano y flores comestibles.", price: "$720", img: cake2, tag: "Edición limitada" },
