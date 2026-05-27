@@ -249,14 +249,12 @@ function Custom({ onOrder }: { onOrder: () => void }) {
               </li>
             ))}
           </ul>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            onClick={onOrder}
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-cream text-forest-deep px-7 py-3.5 text-sm hover:bg-sand transition-colors"
           >
-            <MessageCircle className="w-4 h-4" /> Cotizar por WhatsApp
-          </a>
+            <MessageCircle className="w-4 h-4" /> Cotizar pedido
+          </button>
         </div>
         <div className="aspect-square rounded-[1.5rem] overflow-hidden">
           <img
