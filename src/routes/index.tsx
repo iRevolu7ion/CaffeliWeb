@@ -26,7 +26,6 @@ import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -77,7 +76,8 @@ function Nav({ onOrder }: { onOrder: () => void }) {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep">
-          Caffeli<span className="text-forest">.</span>
+        <img src="/Logo Caffeli.png" alt="Caffeli Logo" className="h-28 w-auto"
+/><span className="text-forest"></span>
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
           {links.map((l) => (
@@ -195,22 +195,18 @@ function About() {
         <div className="order-1 lg:order-2">
           <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Nosotros</span>
           <h2 className="mt-5 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
-            Una pastelería <em className="italic font-normal">boutique</em> nacida del detalle.
+            Una Cafetería <em className="italic font-normal">local</em> nacida del detalle.
           </h2>
           <p className="mt-7 text-muted-foreground leading-relaxed max-w-lg">
-            En Caffeli creemos que un buen pastel no se come, se recuerda. Por eso cada
-            receta nace en nuestro obrador con harinas seleccionadas, mantequillas
-            europeas y una atención obsesiva por la textura, el sabor y la presentación.
+           asdasdas
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">
-            Desde 2018 hemos acompañado bodas, cumpleaños y pequeños rituales diarios
-            con piezas hechas a mano, pensadas para sentirse tan especiales como el
-            momento que celebran.
+            asdasdasdas
           </p>
           <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
             {[
-              { n: "7+", l: "Años creando" },
-              { n: "1.2k", l: "Pedidos al año" },
+              { n: "12+", l: "Años creando" },
+              { n: "n", l: "Pedidos al año" },
               { n: "100%", l: "Artesanal" },
             ].map((s) => (
               <div key={s.l}>
@@ -242,7 +238,7 @@ function Custom({ onOrder }: { onOrder: () => void }) {
             cuente tu historia.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-primary-foreground/85">
-            {["Consulta personalizada con el chef pastelero", "Degustación de sabores y rellenos", "Entrega o recogida en boutique"].map((i) => (
+            {["Consulta personalizada con el chef pastelero", "Degustación de sabores y rellenos", "Entrega o recogida en sucursal"].map((i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-foreground/70" />
                 {i}
@@ -404,8 +400,8 @@ function Testimonials() {
       r: "Cliente recurrente",
     },
     {
-      q: "Sabores limpios, presentación de revista. Es nuestra pastelería favorita en la ciudad.",
-      a: "Andrés Vega",
+      q: "Sabores limpios, presentación de revista. Es nuestra pastelería y cafeteria favorita en la ciudad.",
+      a: "Juan Holguin",
       r: "Reseña Google",
     },
   ];
@@ -456,7 +452,7 @@ function Footer() {
               Caffeli<span className="opacity-70">.</span>
             </div>
             <p className="mt-5 text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
-              Pastelería boutique dedicada a crear experiencias dulces, hechas con
+              Cafetería y pastelería dedicada a crear experiencias dulces, hechas con
               ingredientes de la más alta calidad.
             </p>
             <div className="mt-6 flex items-center gap-3">
@@ -480,10 +476,10 @@ function Footer() {
             <ul className="space-y-3 text-sm text-primary-foreground/85">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                Av. Reforma 142, Roma Norte, CDMX
+                Av. Juárez 321-Local 1, Abraham González, 33983 José Mariano Jiménez, Chih.
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4" /> +52 55 1234 5678
+                <Phone className="w-4 h-4" /> 629-542-2752
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4" /> hola@caffeli.mx
@@ -496,9 +492,9 @@ function Footer() {
               Horario
             </div>
             <ul className="space-y-3 text-sm text-primary-foreground/85">
-              <li className="flex justify-between gap-6"><span>Lunes – Viernes</span><span>9:00 – 20:00</span></li>
-              <li className="flex justify-between gap-6"><span>Sábado</span><span>10:00 – 18:00</span></li>
-              <li className="flex justify-between gap-6"><span>Domingo</span><span className="opacity-70">Cerrado</span></li>
+              <li className="flex justify-between gap-6"><span>Lunes (solo pasteleria) </span><span>9:00 – 16:00 </span></li>
+              <li className="flex justify-between gap-6"><span>Martes - Domingo (cafeteria y pasteleria)</span><span>9:00 – 22:30</span></li>
+              
             </ul>
           </div>
 
