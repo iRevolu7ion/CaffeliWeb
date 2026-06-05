@@ -37,6 +37,7 @@ type CustomState = {
   biscocho: string;
   relleno: string;
   cubierta: string;
+  otraCubierta: string;
   personas: string;
   tematica: string;
   toppings: string;
@@ -46,13 +47,17 @@ type CustomState = {
 const CATALOG: Record<string, string[]> = {
   "Tres leches yogurt": ["Fresa", "Mango"],
   Chocolate: ["Tres chocolates", "Selva negra"],
-  Especiales: ["Chocoflan", "Rosca Zanahoria", "Rosca Chorreada"],
-  "Tres leches": ["Frutas", "Cajeta", "Chocoganache", "Piña coco"],
+  Especiales: ["Chocoflan", "Rosca Zanahoria", "Rosca Chorreada", "Mostachon", "Fresas con crema"],
+  "Tres leches": ["Frutas", "Cajeta", "Chocoganache", "Piña coco", "Mango"],
 };
 
 const SIZES = ["6 personas", "10 personas", "15 personas", "20 personas", "30+ personas"];
-const TIPOS = ["Pastel", "Cupcakes"];
-const BISCOCHOS = ["Chocolate", "Tres Leches", "Vainilla", "Red Velvet", "Zanahoria"];
+const TIPOS = ["Pastel", "Cupcake", "Rosca"];
+const BISCOCHOS = ["Chocolate", "Tres Leches", "Vainilla", "Red Velvet", "Zanahoria", "Tres leches chocolate", "Vainillia Chispas de chocolate", "Nuez", "Almendra", "Mantequilla", "Naranja", "Marmoleado" ];
+const RELLENOS = ["Dulce de leche", "Mermelada Fresa", "Mermelada Piña", "Crema de Avellanas", "Crema de chocolate", "ButterCream", "Crema con frutas", "Crema de queso", "Otro:"]
+
+const CUBIERTA = ["Queso crema dulce", "Buttercream", "Chocolate", "Otro:"]
+
 
 const initialCatalog: CatalogState = {
   category: "",
@@ -72,6 +77,7 @@ const initialCustom: CustomState = {
   biscocho: "",
   relleno: "",
   cubierta: "",
+  otraCubierta: "",
   personas: "",
   tematica: "",
   toppings: "",
@@ -90,6 +96,9 @@ export function OrderModal({
   const [catalog, setCatalog] = useState<CatalogState>(initialCatalog);
   const [custom, setCustom] = useState<CustomState>(initialCustom);
 
+  const [cubierta, setCubierta] = useState("");
+  const [otraCubierta, setOtraCubierta] = useState("");
+  
   const reset = () => {
     setMode("choose");
     setStep(0);
@@ -101,25 +110,25 @@ export function OrderModal({
     if (!v) setTimeout(reset, 200);
     onOpenChange(v);
   };
-
   const sendCatalog = () => {
-    const m = `*🎂 NUEVO PEDIDO — CAFFELI*%0A
-*Tipo:* Catálogo%0A
-━━━━━━━━━━━━━━━%0A
-*Categoría:* ${catalog.category}%0A
-*Pastel:* ${catalog.cake}%0A
-*Tamaño:* ${catalog.size}%0A
-*Fecha de recogida:* ${catalog.date}%0A
-━━━━━━━━━━━━━━━%0A
-*Cliente:* ${catalog.name}%0A
-*Teléfono:* ${catalog.phone}%0A
-${catalog.notes ? `%0A*Notas:* ${catalog.notes}` : ""}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${m}`, "_blank");
-    handleOpenChange(false);
-  };
+  const m = `...`;
+
+  window.open(
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${m}`,
+    "_blank"
+  );
+
+  handleOpenChange(false);
+};
 
   const sendCustom = () => {
-    const m = `*🎂 NUEVO PEDIDO PERSONALIZADO — CAFFELI*%0A
+  const cubiertaFinal =
+    custom.cubierta === "Otro:"
+      ? custom.otraCubierta
+      : custom.cubierta;
+
+  const m = `* NUEVO PEDIDO PERSONALIZADO — CAFFELI*%0A
+
 ━━━━━━━━━━━━━━━%0A
 *Nombre:* ${custom.name}%0A
 *Teléfono:* ${custom.phone}%0A
@@ -128,15 +137,21 @@ ${catalog.notes ? `%0A*Notas:* ${catalog.notes}` : ""}`;
 *Tipo:* ${custom.tipo}%0A
 *Biscocho:* ${custom.biscocho}%0A
 *Relleno:* ${custom.relleno}%0A
-*Cubierta:* ${custom.cubierta}%0A
+*Cubierta:* ${cubiertaFinal}%0A
 *Número de personas:* ${custom.personas}%0A
 ━━━━━━━━━━━━━━━%0A
 *Temática:* ${custom.tematica}%0A
 *Toppings:* ${custom.toppings}%0A
 ${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${m}`, "_blank");
-    handleOpenChange(false);
-  };
+
+  window.open(
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${m}`,
+    "_blank"
+  );
+
+  handleOpenChange(false);
+};
+  
 
   // Step validation
   const catalogStepValid = () => {
@@ -286,7 +301,6 @@ ${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}`;
     </Dialog>
   );
 }
-
 /* ---------- Field primitives ---------- */
 
 function Field({
@@ -530,24 +544,52 @@ function CustomSteps({
       <div className="space-y-5 fade-up">
         <div className="grid sm:grid-cols-2 gap-5">
           <Field label="Relleno">
-            <input
-              className={inputCls}
-              value={state.relleno}
-              onChange={(e) =>
-                setState((p) => ({ ...p, relleno: e.target.value }))
-              }
-              placeholder="Ej. Cajeta, frutos rojos…"
-            />
+            <div className="flex flex-wrap gap-2">
+            {RELLENOS.map((b) => (
+              <Pill
+                key={b}
+                active={state.relleno === b}
+                onClick={() => setState((p) => ({ ...p, relleno: b }))}
+              >
+                {b}
+              </Pill>
+            ))}
+          </div>
           </Field>
           <Field label="Cubierta">
+                    <select
+            value={state.cubierta}
+            onChange={(e) =>
+              setState((p) => ({
+                ...p,
+                cubierta: e.target.value,
+              }))
+            }
+            className={inputCls}
+          >
+            <option value="">Selecciona una cubierta</option>
+
+            {CUBIERTA.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+
+          {state.cubierta === "Otro:" && (
             <input
-              className={inputCls}
-              value={state.cubierta}
+              type="text"
+              placeholder="Escribe la cubierta deseada"
+              value={state.otraCubierta}
               onChange={(e) =>
-                setState((p) => ({ ...p, cubierta: e.target.value }))
+                setState((p) => ({
+                  ...p,
+                  otraCubierta: e.target.value,
+                }))
               }
-              placeholder="Ej. Buttercream, ganache…"
+              className={`${inputCls} mt-2`}
             />
+          )}
           </Field>
         </div>
         <Field label="Número de personas">
