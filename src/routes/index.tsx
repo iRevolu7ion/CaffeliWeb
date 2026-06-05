@@ -75,14 +75,25 @@ function Nav({ onOrder }: { onOrder: () => void }) {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5 text-forest-deep">
+        <a href="#" className="flex items-center gap-3 text-forest-deep">
           <img
             src="/Logo Caffeli.png"
             alt="Caffeli"
-            className="h-10 w-auto object-contain"
+            className="h-11 w-auto object-contain"
           />
-          <span className="font-serif text-2xl tracking-tight leading-none">
-            Caffeli<span className="text-forest">.</span>
+          <span className="flex flex-col leading-none">
+            <span
+              className="font-display text-2xl font-extrabold tracking-tight text-forest-deep"
+              style={{ fontFamily: 'var(--font-display)', fontVariationSettings: '"SOFT" 100, "opsz" 144' }}
+            >
+              Caffeli
+            </span>
+            <span
+              className="mt-1 text-[0.6rem] tracking-[0.32em] font-semibold text-forest/80"
+              style={{ fontFamily: 'var(--font-mono-display)' }}
+            >
+              COFFEE HOUSE
+            </span>
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
