@@ -11,6 +11,11 @@ export default defineConfig({
   // sandbox; without this, `vite build` skips the Vercel output bundle → NOT_FOUND.
   nitro: {
     preset: "vercel",
+    output: {
+      dir: ".vercel/output",
+      serverDir: ".vercel/output/functions/__server.func",
+      publicDir: ".vercel/output/static",
+    },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
