@@ -75,12 +75,8 @@ function Nav({ onOrder }: { onOrder: () => void }) {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center text-forest-deep">
-          <img
-            src="/Logo Caffeli.png"
-            alt="Caffeli — Coffee House"
-            className="h-14 w-auto object-contain rounded-md"
-          />
+        <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep leading-none">
+          Caffeli<span className="text-forest">.</span>
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
           {links.map((l) => (
