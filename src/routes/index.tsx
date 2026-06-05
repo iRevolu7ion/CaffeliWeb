@@ -75,12 +75,8 @@ function Nav({ onOrder }: { onOrder: () => void }) {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center text-forest-deep">
-          <img
-            src="/Logo Caffeli.png"
-            alt="Caffeli — Coffee House"
-            className="h-14 w-auto object-contain rounded-md"
-          />
+        <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep leading-none">
+          Caffeli<span className="text-forest">.</span>
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
           {links.map((l) => (
@@ -146,6 +142,13 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 width={1024}
                 height={1024}
                 className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -top-5 -right-4 sm:-right-6 bg-card/95 backdrop-blur rounded-2xl p-3 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] rotate-3">
+              <img
+                src="/Logo Caffeli.png"
+                alt="Caffeli — Coffee House"
+                className="h-16 w-auto object-contain rounded-lg"
               />
             </div>
             <div className="absolute -bottom-6 -left-4 sm:left-6 bg-card/95 backdrop-blur rounded-2xl px-5 py-4 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.25)] flex items-center gap-3">
