@@ -102,6 +102,11 @@ function Hero({ onOrder }: { onOrder: () => void }) {
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="fade-up">
+            <img
+              src="/Logo Caffeli.png"
+              alt="Caffeli — Coffee House"
+              className="h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
+            />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
             </span>
@@ -142,13 +147,6 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 width={1024}
                 height={1024}
                 className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -top-5 -right-4 sm:-right-6 bg-card/95 backdrop-blur rounded-2xl p-3 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] rotate-3">
-              <img
-                src="/Logo Caffeli.png"
-                alt="Caffeli — Coffee House"
-                className="h-16 w-auto object-contain rounded-lg"
               />
             </div>
             <div className="absolute -bottom-6 -left-4 sm:left-6 bg-card/95 backdrop-blur rounded-2xl px-5 py-4 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.25)] flex items-center gap-3">
