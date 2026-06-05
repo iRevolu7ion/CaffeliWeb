@@ -105,7 +105,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
             <img
               src="/Logo Caffeli.png"
               alt="Caffeli — Coffee House"
-              className="h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
+              className="h-60 sm:h-68 lg:h-76 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
             />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium

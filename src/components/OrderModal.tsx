@@ -13,6 +13,8 @@ import {
   Cake,
   Sparkles,
   Check,
+  ImagePlus,
+  X,
 } from "lucide-react";
 
 const WHATSAPP_NUMBER = "526291239239";
@@ -42,6 +44,7 @@ type CustomState = {
   tematica: string;
   toppings: string;
   notas: string;
+  fotoReferencia: string | null;
 };
 
 const CATALOG: Record<string, string[]> = {
@@ -82,6 +85,7 @@ const initialCustom: CustomState = {
   tematica: "",
   toppings: "",
   notas: "",
+  fotoReferencia: null,
 };
 
 export function OrderModal({
@@ -121,11 +125,15 @@ export function OrderModal({
   handleOpenChange(false);
 };
 
-  const sendCustom = () => {
+  const sendCustom = async () => {
   const cubiertaFinal =
     custom.cubierta === "Otro:"
       ? custom.otraCubierta
       : custom.cubierta;
+
+  const fotoLine = custom.fotoReferencia
+    ? "%0A*Foto de referencia:* Sí (adjuntaré la imagen en el chat)"
+    : "";
 
   const m = `* NUEVO PEDIDO PERSONALIZADO — CAFFELI*%0A
 
@@ -142,7 +150,19 @@ export function OrderModal({
 ━━━━━━━━━━━━━━━%0A
 *Temática:* ${custom.tematica}%0A
 *Toppings:* ${custom.toppings}%0A
-${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}`;
+${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}${fotoLine}`;
+
+  if (custom.fotoReferencia) {
+    try {
+      const res = await fetch(custom.fotoReferencia);
+      const blob = await res.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({ [blob.type]: blob }),
+      ]);
+    } catch {
+      // El cliente puede adjuntar la imagen manualmente en WhatsApp
+    }
+  }
 
   window.open(
     `https://wa.me/${WHATSAPP_NUMBER}?text=${m}`,
@@ -629,6 +649,61 @@ function CustomSteps({
           }
           placeholder="Ej. Flores comestibles, frutos rojos, hoja de oro…"
         />
+      </Field>
+      <Field label="Foto de referencia (opcional)">
+        {state.fotoReferencia ? (
+          <div className="relative rounded-xl overflow-hidden border border-border bg-card">
+            <img
+              src={state.fotoReferencia}
+              alt="Vista previa de referencia"
+              className="w-full max-h-48 object-contain bg-sand/30"
+            />
+            <button
+              type="button"
+              onClick={() => setState((p) => ({ ...p, fotoReferencia: null }))}
+              className="absolute top-2 right-2 inline-flex items-center justify-center w-8 h-8 rounded-full bg-forest/90 text-primary-foreground hover:bg-forest transition-colors"
+              aria-label="Quitar foto"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          <label className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-border bg-card px-4 py-8 cursor-pointer hover:border-forest/40 hover:bg-sand/20 transition-all">
+            <ImagePlus className="w-8 h-8 text-forest/60" />
+            <span className="text-sm text-forest-deep">
+              Toca para subir una imagen
+            </span>
+            <span className="text-xs text-muted-foreground">
+              JPG, PNG o WEBP · máx. 5 MB
+            </span>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/heic,image/heif"
+              className="sr-only"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = "";
+                if (!file) return;
+                if (!file.type.startsWith("image/")) return;
+                if (file.size > 5 * 1024 * 1024) {
+                  alert("La imagen no debe superar 5 MB.");
+                  return;
+                }
+                const reader = new FileReader();
+                reader.onload = () =>
+                  setState((p) => ({
+                    ...p,
+                    fotoReferencia: reader.result as string,
+                  }));
+                reader.readAsDataURL(file);
+              }}
+            />
+          </label>
+        )}
+        <p className="mt-2 text-xs text-muted-foreground">
+          Si subes una foto, se copiará al portapapeles para que la pegues en
+          WhatsApp al enviar el pedido.
+        </p>
       </Field>
       <Field label="Solicitudes especiales">
         <textarea
