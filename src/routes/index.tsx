@@ -144,6 +144,13 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 className="w-full h-full object-cover"
               />
             </div>
+            <div className="absolute -top-5 -right-4 sm:-right-6 bg-card/95 backdrop-blur rounded-2xl p-3 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] rotate-3">
+              <img
+                src="/Logo Caffeli.png"
+                alt="Caffeli — Coffee House"
+                className="h-16 w-auto object-contain rounded-lg"
+              />
+            </div>
             <div className="absolute -bottom-6 -left-4 sm:left-6 bg-card/95 backdrop-blur rounded-2xl px-5 py-4 shadow-[0_20px_50px_-20px_rgba(40,60,40,0.25)] flex items-center gap-3">
               <div className="flex items-center gap-0.5 text-forest">
                 {[...Array(5)].map((_, i) => (
