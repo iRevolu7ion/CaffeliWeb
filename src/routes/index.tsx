@@ -332,7 +332,7 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
     stock: 1
   },
   {
-    name: "RAAAAAAPRUEBA",
+    name: "Rosca Chorreada",
     desc: "Rosca cubierta con cajeta y nuez caramelizada.",
     img: cake5,
     tag: "Especial",
