@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { OrderModal } from "@/components/OrderModal";
 import {
   Instagram,
@@ -14,6 +14,11 @@ import {
   ShoppingBag,
   Store,
   MessageCircle,
+  Coffee,
+  Droplets,
+  Flame,
+  Award,
+  Sprout,
 } from "lucide-react";
 
 import heroCake from "@/assets/hero-cake.jpg";
@@ -24,10 +29,8 @@ import cake2 from "@/assets/cake-2.jpg";
 import cake3 from "@/assets/cake-3.jpg";
 import cake4 from "@/assets/cake-5.jpg";
 import cake5 from "@/assets/cake-4.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
+import coffeeGroundImg from "@/assets/coffee-ground.jpg";
+import coffeeBeanImg from "@/assets/coffee-bean.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -59,7 +62,7 @@ function Index() {
       <About />
       <Custom onOrder={() => setOrderOpen(true)} />
       <CakesOfTheDay onOrder={() => setOrderOpen(true)} />
-      <Gallery />
+      <NuestroCafe />
       <Testimonials />
       <Footer />
       <OrderModal open={orderOpen} onOpenChange={setOrderOpen} />
@@ -72,7 +75,7 @@ function Nav({ onOrder }: { onOrder: () => void }) {
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
     { label: "Pasteles", href: "#custom" },
-    { label: "Galería", href: "#gallery" },
+    { label: "Nuestro Café", href: "#coffee" },
   ];
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
@@ -132,7 +135,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 Ordenar ahora
               </button>
               <a
-                href="#gallery"
+                href="#coffee"
                 className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
               >
                 Ver catálogo
