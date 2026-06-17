@@ -525,6 +525,9 @@ function NuestroCafe() {
 
   return (
     <section id="coffee" className="px-4 sm:px-6 lg:px-10 pb-28">
+      <h1 style={{ fontSize: "80px", color: "red" }}>
+  PRUEBA CAFE
+</h1>
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
