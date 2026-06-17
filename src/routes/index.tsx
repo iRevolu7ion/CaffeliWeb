@@ -22,6 +22,8 @@ import customImg from "@/assets/custom.jpg";
 import cake1 from "@/assets/cake-1.jpg";
 import cake2 from "@/assets/cake-2.jpg";
 import cake3 from "@/assets/cake-3.jpg";
+import cake4 from "@/assets/cake-5.jpg";
+import cake5 from "@/assets/cake-4.jpg";
 import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
@@ -46,7 +48,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const WHATSAPP = "https://wa.me/525512345678?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
+const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 function Index() {
   const [orderOpen, setOrderOpen] = useState(false);
@@ -75,8 +77,12 @@ function Nav({ onOrder }: { onOrder: () => void }) {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep leading-none">
-          Caffeli<span className="text-forest">.</span>
+        <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep">
+          <img
+  src="/logo.png"
+  alt="Caffeli Logo"
+  className="h-12 w-auto"
+/><span className="text-forest">.</span>
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
           {links.map((l) => (
@@ -102,11 +108,6 @@ function Hero({ onOrder }: { onOrder: () => void }) {
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="fade-up">
-            <img
-              src="/Logo Caffeli.png"
-              alt="Caffeli — Coffee House"
-              className="h-60 sm:h-68 lg:h-76 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
-            />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
             </span>
@@ -274,17 +275,71 @@ function Custom({ onOrder }: { onOrder: () => void }) {
 type Cake = {
   name: string;
   desc: string;
-  price: string;
   img: string;
   tag: string;
+  stock: number;
+
+  // Para pasteles normales
+  sizes?: {
+    label: string;
+    price: number;
+  }[];
+
+  // Para especiales
+  price?: number;
 };
 
 function CakesOfTheDay(_props: { onOrder: () => void }) {
   const cakes: Cake[] = [
-    { name: "Chocolate Noir", desc: "Ganache de cacao 70% y frutos rojos frescos.", price: "$640", img: cake1, tag: "Hoy" },
-    { name: "Pistacho & Rosa", desc: "Bizcocho de pistacho siciliano y flores comestibles.", price: "$720", img: cake2, tag: "Edición limitada" },
-    { name: "Tarta de Limón", desc: "Crema cítrica con merengue italiano flameado.", price: "$520", img: cake3, tag: "Clásico" },
-  ];
+  {
+    name: "Tres Leches Fresa",
+    desc: "Pan de vainilla bañado en tres leches con relleno de fresa natural.",
+    img: cake1,
+    tag: "Hoy",
+    sizes: [
+      { label: "Chico", price: 380 },
+      { label: "Mediano", price: 450 },
+      { label: "Grande", price: 580 }
+    ],
+    stock: 3
+  },
+  {
+    name: "Tres Leches Mango",
+    desc: "Tres leches con relleno de mango fresco.",
+    img: cake2,
+    tag: "Disponible",
+    sizes: [
+      { label: "Chico", price: 380 },
+      { label: "Mediano", price: 450 },
+      { label: "Grande", price: 580 }
+    ],
+    stock: 2
+  },
+  {
+    name: "Chocoflan",
+    desc: "Flan cremoso sobre pastel de chocolate con cubierta de cajeta.",
+    img: cake3,
+    tag: "Especial",
+    price: 520,
+    stock: 1
+  },
+  {
+    name: "Rosca de Zanahoria",
+    desc: "Pan húmedo de zanahoria con nuez y queso crema.",
+    img: cake4,
+    tag: "Especial",
+    price: 480,
+    stock: 1
+  },
+  {
+    name: "Rosca Chorreada",
+    desc: "Rosca cubierta con cajeta y nuez caramelizada.",
+    img: cake5,
+    tag: "Especial",
+    price: 550,
+    stock: 1
+  }
+];
   return (
     <section id="cakes" className="px-4 sm:px-6 lg:px-10 pb-28">
       <div className="mx-auto max-w-7xl">
@@ -296,8 +351,8 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-sm">
-            Reserva, compra en línea o recoge en boutique. Cantidades limitadas cada
-            mañana.
+            Aparta tu pastel antes de que se agote.
+Disponibles únicamente por hoy.
           </p>
         </div>
 
@@ -328,22 +383,21 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
 
                 <div className="mt-6 grid grid-cols-2 gap-2">
-                  <button className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-4 py-2.5 text-xs hover:bg-forest-deep transition-colors">
-                    <ShoppingBag className="w-3.5 h-3.5" /> Comprar
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-4 py-2.5 text-xs hover:bg-forest-deep transition-colors"
+                  >
+                    <ShoppingBag className="w-3.5 h-3.5" />
+                    Comprar ahora
                   </button>
-                  <button className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/30 text-forest-deep px-4 py-2.5 text-xs hover:bg-sand transition-colors">
-                    <Sparkles className="w-3.5 h-3.5" /> Reservar
-                  </button>
-                  <button className="inline-flex items-center justify-center gap-2 rounded-full border border-border text-forest-deep px-4 py-2.5 text-xs hover:bg-sand/60 transition-colors">
-                    <Store className="w-3.5 h-3.5" /> Recoger
-                  </button>
+
                   <a
                     href={`${WHATSAPP}%20-%20${encodeURIComponent(c.name)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-forest-deep text-primary-foreground px-4 py-2.5 text-xs hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    WhatsApp
                   </a>
                 </div>
               </div>
