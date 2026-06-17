@@ -378,9 +378,22 @@ Disponibles únicamente por hoy.
               <div className="p-7">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-2xl text-forest-deep">{c.name}</h3>
-                  <span className="font-serif text-xl text-forest">{c.price}</span>
+                  <span className="font-serif text-xl text-forest">
+                       {c.sizes
+                        ? `Desde $${c.sizes[0].price} por persona`
+                        : `$${c.price}`}
+                  </span>
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+                {c.stock === 1 ? (
+                    <p className="mt-2 text-xs text-red-600 font-medium">
+                      🔥 Última pieza disponible
+                    </p>
+                  ) : (
+                    <p className="mt-2 text-xs text-forest font-medium">
+                      🔥 Quedan {c.stock} disponibles
+                    </p>
+                 )}
 
                 <div className="mt-6 grid grid-cols-2 gap-2">
                   <button
