@@ -2,7 +2,7 @@ import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { R as Root, P as Portal, a as Content, C as Close, T as Title, D as Description, O as Overlay } from "../_libs/radix-ui__react-dialog.mjs";
 import { c as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-import { g as Sparkles, h as Star, L as Leaf, C as Cake, f as MessageCircle, S as ShoppingBag, i as Store, d as Instagram, F as Facebook, e as MapPin, P as Phone, M as Mail, c as ChevronRight, b as ChevronLeft, X, I as ImagePlus, a as Check } from "../_libs/lucide-react.mjs";
+import { g as Sparkles, h as Star, L as Leaf, C as Cake, f as MessageCircle, S as ShoppingBag, d as Instagram, F as Facebook, e as MapPin, P as Phone, M as Mail, c as ChevronRight, b as ChevronLeft, X, I as ImagePlus, a as Check } from "../_libs/lucide-react.mjs";
 import "../_libs/radix-ui__primitive.mjs";
 import "../_libs/radix-ui__react-compose-refs.mjs";
 import "../_libs/radix-ui__react-context.mjs";
@@ -641,6 +641,8 @@ const customImg = "/assets/custom-D0NOOPZh.jpg";
 const cake1 = "/assets/cake-1-BhSIyIIM.jpg";
 const cake2 = "/assets/cake-2-Ze0DUAPo.jpg";
 const cake3 = "/assets/cake-3-t2qiKKd7.jpg";
+const cake4 = "/assets/cake-5-CyWeeQKx.jpg";
+const cake5 = "/assets/cake-4-uM0L-Gdw.jpg";
 const g1 = "/assets/gallery-1-C6thN_5C.jpg";
 const g2 = "/assets/gallery-2-gu45FcYw.jpg";
 const g3 = "/assets/gallery-3-De9qOmhg.jpg";
@@ -794,28 +796,63 @@ function Custom({
 }
 function CakesOfTheDay(_props) {
   const cakes = [{
-    name: "Chocolate Noir",
-    desc: "Ganache de cacao 70% y frutos rojos frescos.",
-    price: "$640",
+    name: "Tres Leches Fresa",
+    desc: "Pan de vainilla bañado en tres leches con relleno de fresa natural.",
     img: cake1,
-    tag: "Hoy"
+    tag: "Hoy",
+    sizes: [{
+      label: "Chico",
+      price: 380
+    }, {
+      label: "Mediano",
+      price: 450
+    }, {
+      label: "Grande",
+      price: 580
+    }],
+    stock: 3
   }, {
-    name: "Pistacho & Rosa",
-    desc: "Bizcocho de pistacho siciliano y flores comestibles.",
-    price: "$720",
+    name: "Tres Leches Mango",
+    desc: "Tres leches con relleno de mango fresco.",
     img: cake2,
-    tag: "Edición limitada"
+    tag: "Disponible",
+    sizes: [{
+      label: "Chico",
+      price: 380
+    }, {
+      label: "Mediano",
+      price: 450
+    }, {
+      label: "Grande",
+      price: 580
+    }],
+    stock: 2
   }, {
-    name: "Tarta de Limón",
-    desc: "Crema cítrica con merengue italiano flameado.",
-    price: "$520",
+    name: "Chocoflan",
+    desc: "Flan cremoso sobre pastel de chocolate con cubierta de cajeta.",
     img: cake3,
-    tag: "Clásico"
+    tag: "Especial",
+    price: 520,
+    stock: 1
+  }, {
+    name: "Rosca de Zanahoria",
+    desc: "Pan húmedo de zanahoria con nuez y queso crema.",
+    img: cake4,
+    tag: "Especial",
+    price: 480,
+    stock: 1
+  }, {
+    name: "Rosca Chorreada",
+    desc: "Rosca cubierta con cajeta y nuez caramelizada.",
+    img: cake5,
+    tag: "Especial",
+    price: 550,
+    stock: 1
   }];
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "cakes", className: "px-4 sm:px-6 lg:px-10 pb-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-2xl", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Pasteles del día" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Pasteles del día 🚀 NUEVA VERSION" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep", children: [
           "Hechos hoy, ",
           /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic font-normal", children: "listos para ti" }),
@@ -832,25 +869,22 @@ function CakesOfTheDay(_props) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-7", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-baseline justify-between gap-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-serif text-2xl text-forest-deep", children: c.name }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-serif text-xl text-forest", children: c.price })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-serif text-xl text-forest", children: c.sizes ? `Desde $${c.sizes[0].price} por persona` : `$${c.price}` })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground leading-relaxed", children: c.desc }),
+        c.stock === 1 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-xs text-red-600 font-medium", children: "🔥 Última pieza disponible" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-xs text-forest font-medium", children: [
+          "🔥 Quedan ",
+          c.stock,
+          " disponibles"
+        ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 grid grid-cols-2 gap-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: "inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-4 py-2.5 text-xs hover:bg-forest-deep transition-colors", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingBag, { className: "w-3.5 h-3.5" }),
-            " Comprar"
+            "Comprar ahora"
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: "inline-flex items-center justify-center gap-2 rounded-full border border-forest/30 text-forest-deep px-4 py-2.5 text-xs hover:bg-sand transition-colors", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Sparkles, { className: "w-3.5 h-3.5" }),
-            " Reservar"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: "inline-flex items-center justify-center gap-2 rounded-full border border-border text-forest-deep px-4 py-2.5 text-xs hover:bg-sand/60 transition-colors", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Store, { className: "w-3.5 h-3.5" }),
-            " Recoger"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: `${WHATSAPP}%20-%20${encodeURIComponent(c.name)}`, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-2 rounded-full bg-forest-deep text-primary-foreground px-4 py-2.5 text-xs hover:opacity-90 transition-opacity", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: `${WHATSAPP}%20-%20${encodeURIComponent(c.name)}`, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-3.5 h-3.5" }),
-            " WhatsApp"
+            "WhatsApp"
           ] })
         ] })
       ] })
