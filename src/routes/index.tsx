@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { OrderModal } from "@/components/OrderModal";
 import {
   Instagram,
@@ -14,6 +14,11 @@ import {
   ShoppingBag,
   Store,
   MessageCircle,
+  Coffee,
+  Droplets,
+  Flame,
+  Award,
+  Sprout,
 } from "lucide-react";
 
 import heroCake from "@/assets/hero-cake.jpg";
@@ -24,10 +29,8 @@ import cake2 from "@/assets/cake-2.jpg";
 import cake3 from "@/assets/cake-3.jpg";
 import cake4 from "@/assets/cake-5.jpg";
 import cake5 from "@/assets/cake-4.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
+import coffeeGroundImg from "@/assets/coffee-ground.jpg";
+import coffeeBeanImg from "@/assets/coffee-bean.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -59,7 +62,7 @@ function Index() {
       <About />
       <Custom onOrder={() => setOrderOpen(true)} />
       <CakesOfTheDay onOrder={() => setOrderOpen(true)} />
-      <Gallery />
+      <NuestroCafe />
       <Testimonials />
       <Footer />
       <OrderModal open={orderOpen} onOpenChange={setOrderOpen} />
@@ -72,7 +75,7 @@ function Nav({ onOrder }: { onOrder: () => void }) {
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
     { label: "Pasteles", href: "#custom" },
-    { label: "Galería", href: "#gallery" },
+    { label: "Nuestro Café", href: "#coffee" },
   ];
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
@@ -132,7 +135,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 Ordenar ahora
               </button>
               <a
-                href="#gallery"
+                href="#coffee"
                 className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
               >
                 Ver catálogo
@@ -422,37 +425,247 @@ Disponibles únicamente por hoy.
   );
 }
 
-function Gallery() {
-  const imgs = [
-    { src: g2, alt: "Rebanada de pastel con fresas", span: "row-span-2" },
-    { src: g1, alt: "Macarons pastel" },
-    { src: g3, alt: "Croissants recién horneados" },
-    { src: g4, alt: "Pastel rústico con higos y miel", span: "row-span-2" },
-  ];
+function useScrollReveal(threshold = 0.12) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+function ScrollReveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const { ref, visible } = useScrollReveal();
   return (
-    <section id="gallery" className="px-4 sm:px-6 lg:px-10 pb-28">
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function NuestroCafe() {
+  const infoItems = [
+    {
+      icon: MapPin,
+      label: "Origen",
+      lines: [
+        "Finca La Unión, Belisario Domínguez, Motozintla, Chiapas.",
+        "Producido y tostado por Emilio Gálvez.",
+      ],
+    },
+    {
+      icon: Sprout,
+      label: "Variedad",
+      lines: ["Arábica 100%"],
+    },
+    {
+      icon: Droplets,
+      label: "Proceso",
+      lines: ["Lavado"],
+    },
+    {
+      icon: Flame,
+      label: "Tueste",
+      lines: ["Medio"],
+    },
+    {
+      icon: Award,
+      label: "Puntaje de calidad",
+      lines: ["84.19 puntos", "Café de Especialidad"],
+    },
+  ];
+
+  const perfilItems = [
+    "Cuerpo cremoso",
+    "Dulzor pronunciado",
+    "Acidez balanceada",
+    "Notas a miel",
+    "Caramelo",
+    "Azúcar morena",
+    "Matices cítricos",
+    "Manzana verde",
+    "Retrogusto limpio y agradable",
+  ];
+
+  const presentaciones = [
+    {
+      tipo: "Café Molido",
+      img: coffeeGroundImg,
+      variantes: [
+        { size: "250g", price: 180 },
+        { size: "500g", price: 320 },
+        { size: "1kg", price: 580 },
+      ],
+    },
+    {
+      tipo: "Café en Grano",
+      img: coffeeBeanImg,
+      variantes: [
+        { size: "250g", price: 170 },
+        { size: "500g", price: 310 },
+        { size: "1kg", price: 560 },
+      ],
+    },
+  ];
+
+  return (
+    <section id="coffee" className="px-4 sm:px-6 lg:px-10 pb-28">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Galería</span>
+        {/* Header */}
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Nuestro Café</span>
           <h2 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
-            Pequeños <em className="italic font-normal">momentos</em> de obrador.
+            Café de <em className="italic font-normal">especialidad</em>
           </h2>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[180px] sm:auto-rows-[240px] gap-4">
-          {imgs.map((i, idx) => (
-            <div
-              key={idx}
-              className={`rounded-2xl overflow-hidden bg-sand ${i.span ?? ""}`}
-            >
-              <img
-                src={i.src}
-                alt={i.alt}
-                loading="lazy"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1200ms]"
-              />
+          <p className="mt-6 text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            Café de especialidad cultivado en Chiapas, seleccionado y tostado para ofrecer una experiencia única en cada taza.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-forest/40">
+              <path d="M10 30C15 15 25 10 35 20C45 30 55 30 65 20C75 10 85 15 90 30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M25 20C30 8 40 5 50 15" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+              <path d="M70 18C75 8 85 5 95 15" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+              <circle cx="35" cy="20" r="2" fill="currentColor"/>
+              <circle cx="65" cy="20" r="2" fill="currentColor"/>
+              <circle cx="50" cy="15" r="1.5" fill="currentColor"/>
+              <circle cx="80" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+        </ScrollReveal>
+
+        {/* Info Grid */}
+        <ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
+            {infoItems.map((item) => (
+              <div
+                key={item.label}
+                className="bg-card border border-border/60 rounded-[1.25rem] p-6 text-center hover:shadow-[0_20px_40px_-25px_rgba(40,60,40,0.18)] transition-shadow"
+              >
+                <div className="mx-auto w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center mb-4">
+                  <item.icon className="w-5 h-5 text-forest" />
+                </div>
+                <div className="text-xs uppercase tracking-[0.2em] text-forest/80 mb-2">{item.label}</div>
+                {item.lines.map((line, i) => (
+                  <p key={i} className={`text-sm ${i === 0 ? "text-forest-deep font-medium" : "text-muted-foreground"} ${i > 0 ? "mt-1" : ""}`}>
+                    {line}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* Perfil de la Taza */}
+        <ScrollReveal>
+          <div className="bg-forest text-primary-foreground rounded-[2rem] p-8 sm:p-14 lg:p-16 mb-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+            <div className="relative max-w-3xl">
+              <span className="text-xs uppercase tracking-[0.25em] text-primary-foreground/70">Perfil Sensorial</span>
+              <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">Perfil de la Taza</h3>
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+                {perfilItems.map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/70 shrink-0" />
+                    <span className="text-sm text-primary-foreground/90">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Presentaciones */}
+        <ScrollReveal>
+          <div className="mb-6">
+            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Presentaciones</span>
+            <h3 className="mt-3 font-serif text-3xl sm:text-4xl text-forest-deep">Disponibles</h3>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {presentaciones.map((prod) => (
+            <ScrollReveal key={prod.tipo}>
+              <article className="group bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1">
+                <div className="aspect-[4/3] overflow-hidden bg-sand relative">
+                  <img
+                    src={prod.img}
+                    alt={prod.tipo}
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]"
+                  />
+                  <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5">
+                    {prod.tipo}
+                  </span>
+                </div>
+                <div className="p-7">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                    Café de especialidad de Chiapas, tostado medio, con notas a miel, caramelo y frutas cítricas. Empaque premium con válvula de degasificación.
+                  </p>
+                  <div className="space-y-3">
+                    {prod.variantes.map((v) => (
+                      <div
+                        key={v.size}
+                        className="flex items-center justify-between rounded-xl bg-sand/60 px-5 py-3"
+                      >
+                        <span className="text-sm font-medium text-forest-deep">{v.size}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="font-serif text-lg text-forest">${v.price}</span>
+                          <div className="flex gap-2">
+                            <a
+                              href={WHATSAPP}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors"
+                            >
+                              <ShoppingBag className="w-3 h-3" /> Comprar
+                            </a>
+                            <a
+                              href={`${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors"
+                            >
+                              <MessageCircle className="w-3 h-3" /> WhatsApp
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
+
+        {/* Frase */}
+        <ScrollReveal>
+          <div className="max-w-4xl mx-auto text-center px-6">
+            <div className="w-12 h-px bg-forest/30 mx-auto mb-8" />
+            <blockquote className="font-serif text-xl sm:text-2xl lg:text-3xl text-forest-deep leading-relaxed">
+              "Disfrutar de un buen café de especialidad es más que un simple placer; es un viaje que conecta culturas y tradiciones, recordándonos la belleza de lo artesanal y el valor de lo auténtico."
+            </blockquote>
+            <div className="w-12 h-px bg-forest/30 mx-auto mt-8" />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
