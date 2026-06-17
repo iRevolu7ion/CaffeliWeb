@@ -345,7 +345,7 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Pasteles del día</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Pasteles del día 🚀 NUEVA VERSION</span>
             <h2 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
               Hechos hoy, <em className="italic font-normal">listos para ti</em>.
             </h2>
