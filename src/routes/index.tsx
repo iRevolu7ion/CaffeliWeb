@@ -54,7 +54,7 @@ export const Route = createFileRoute("/")({
 const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 function Index() {
-  throw new Error("PRUEBA VERCEL");
+  
   const [orderOpen, setOrderOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
