@@ -72,7 +72,7 @@ function Index() {
 
 function Nav({ onOrder }: { onOrder: () => void }) {
   const links = [
-    { label: "Nosotros", href: "#about" },
+    { label: "Nosotroooooooos", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
     { label: "Pasteles", href: "#custom" },
     { label: "Nuestro Café", href: "#coffee" },
