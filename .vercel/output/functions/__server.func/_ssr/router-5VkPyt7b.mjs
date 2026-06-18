@@ -109,7 +109,7 @@ const $$splitComponentImporter = () => import("./index-CvReHDaL.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
-      title: "Caffeli — Pastelería boutique artesanal"
+      title: "Caffeli — Café de Especialidad y Pastelería Artesanal"
     }, {
       name: "description",
       content: "Caffeli es una pastelería boutique que crea pasteles artesanales con ingredientes premium. Reserva, compra o recoge en tienda."

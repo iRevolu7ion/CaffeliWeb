@@ -34,7 +34,7 @@ import coffeeBeanImg from "@/assets/coffee-bean.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Caffeli — Pastelería boutique artesanal" },
+      { title: "Caffeli — Café de Especialidad y Pastelería Artesanal" },
       {
         name: "description",
         content:
