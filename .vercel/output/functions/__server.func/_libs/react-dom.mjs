@@ -1,4 +1,4 @@
-import { b as requireReact, g as getDefaultExportFromCjs } from "./react.mjs";
+import { a as requireReact, g as getDefaultExportFromCjs } from "./react.mjs";
 import require$$0 from "util";
 import require$$1 from "crypto";
 import require$$2 from "async_hooks";

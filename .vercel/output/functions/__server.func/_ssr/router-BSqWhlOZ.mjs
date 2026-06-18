@@ -15,7 +15,7 @@ import "crypto";
 import "async_hooks";
 import "stream";
 import "../_libs/isbot.mjs";
-const appCss = "/assets/styles-D8sf62k_.css";
+const appCss = "/assets/styles-U7bMApqS.css";
 function NotFoundComponent() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-md text-center", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-7xl font-bold text-foreground", children: "404" }),
@@ -75,6 +75,12 @@ const Route$1 = createRootRouteWithContext()({
       { name: "twitter:site", content: "@Lovable" }
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap"
+      },
       {
         rel: "stylesheet",
         href: appCss
@@ -99,7 +105,7 @@ function RootComponent() {
   const { queryClient } = Route$1.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) });
 }
-const $$splitComponentImporter = () => import("./index-DDKRoi2f.mjs");
+const $$splitComponentImporter = () => import("./index-1BgpeJ2H.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
