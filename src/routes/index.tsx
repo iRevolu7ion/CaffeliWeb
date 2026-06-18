@@ -73,7 +73,7 @@ function Index() {
 
 function Nav({ onOrder }: { onOrder: () => void }) {
   const links = [
-    { label: "Nosotroooooooos", href: "#about" },
+    { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
     { label: "Pasteles", href: "#custom" },
     { label: "Nuestro Café", href: "#coffee" },
@@ -108,6 +108,11 @@ function Hero({ onOrder }: { onOrder: () => void }) {
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="fade-up">
+            <img
+              src="/Logo Caffeli.png"
+              alt="Caffeli — Coffee House"
+              className="h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
+            />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
             </span>
@@ -522,9 +527,6 @@ function NuestroCafe() {
 
   return (
     <section id="coffee" className="px-4 sm:px-6 lg:px-10 pb-28">
-      <h1 style={{ fontSize: "80px", color: "red" }}>
-  PRUEBA CAFE
-</h1>
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">

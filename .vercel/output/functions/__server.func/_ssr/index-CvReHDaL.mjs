@@ -664,7 +664,7 @@ function Nav({
   onOrder
 }) {
   const links = [{
-    label: "Nosotroooooooos",
+    label: "Nosotros",
     href: "#about"
   }, {
     label: "Catálogo",
@@ -688,6 +688,7 @@ function Hero({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "px-4 sm:px-6 lg:px-10 pt-8 pb-24", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid lg:grid-cols-2 gap-12 lg:gap-20 items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fade-up", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "/Logo Caffeli.png", alt: "Caffeli — Coffee House", className: "h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Sparkles, { className: "w-3.5 h-3.5" }),
           " Artesanal & Premium"
@@ -968,85 +969,79 @@ function NuestroCafe() {
       price: 560
     }]
   }];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "coffee", className: "px-4 sm:px-6 lg:px-10 pb-28", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: {
-      fontSize: "80px",
-      color: "red"
-    }, children: "PRUEBA CAFE" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(ScrollReveal, { className: "text-center max-w-3xl mx-auto mb-16", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Nuestro Café" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep", children: [
-          "Café de ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic font-normal", children: "especialidad" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-6 text-muted-foreground leading-relaxed max-w-xl mx-auto", children: "Café de especialidad cultivado en Chiapas, seleccionado y tostado para ofrecer una experiencia única en cada taza." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6 flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "120", height: "40", viewBox: "0 0 120 40", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: "text-forest/40", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M10 30C15 15 25 10 35 20C45 30 55 30 65 20C75 10 85 15 90 30", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M25 20C30 8 40 5 50 15", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M70 18C75 8 85 5 95 15", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "35", cy: "20", r: "2", fill: "currentColor" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "65", cy: "20", r: "2", fill: "currentColor" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "50", cy: "15", r: "1.5", fill: "currentColor" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "80", cy: "12", r: "1.5", fill: "currentColor" })
-        ] }) })
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "coffee", className: "px-4 sm:px-6 lg:px-10 pb-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(ScrollReveal, { className: "text-center max-w-3xl mx-auto mb-16", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Nuestro Café" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep", children: [
+        "Café de ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic font-normal", children: "especialidad" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16", children: infoItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card border border-border/60 rounded-[1.25rem] p-6 text-center hover:shadow-[0_20px_40px_-25px_rgba(40,60,40,0.18)] transition-shadow", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { className: "w-5 h-5 text-forest" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs uppercase tracking-[0.2em] text-forest/80 mb-2", children: item.label }),
-        item.lines.map((line, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm ${i === 0 ? "text-forest-deep font-medium" : "text-muted-foreground"} ${i > 0 ? "mt-1" : ""}`, children: line }, i))
-      ] }, item.label)) }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-forest text-primary-foreground rounded-[2rem] p-8 sm:p-14 lg:p-16 mb-16 relative overflow-hidden", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative max-w-3xl", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-primary-foreground/70", children: "Perfil Sensorial" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]", children: "Perfil de la Taza" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3", children: perfilItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-primary-foreground/70 shrink-0" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-primary-foreground/90", children: item })
-          ] }, item)) })
-        ] })
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Presentaciones" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-3 font-serif text-3xl sm:text-4xl text-forest-deep", children: "Disponibles" })
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 gap-6 mb-16", children: presentaciones.map((prod) => /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "group bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "aspect-[4/3] overflow-hidden bg-sand relative", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: prod.img, alt: prod.tipo, width: 1024, height: 1024, loading: "lazy", className: "w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5", children: prod.tipo })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-7", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground leading-relaxed mb-5", children: "Café de especialidad de Chiapas, tostado medio, con notas a miel, caramelo y frutas cítricas. Empaque premium con válvula de degasificación." }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", children: prod.variantes.map((v) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between rounded-xl bg-sand/60 px-5 py-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium text-forest-deep", children: v.size }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-serif text-lg text-forest", children: [
-                "$",
-                v.price
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-6 text-muted-foreground leading-relaxed max-w-xl mx-auto", children: "Café de especialidad cultivado en Chiapas, seleccionado y tostado para ofrecer una experiencia única en cada taza." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6 flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "120", height: "40", viewBox: "0 0 120 40", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: "text-forest/40", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M10 30C15 15 25 10 35 20C45 30 55 30 65 20C75 10 85 15 90 30", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M25 20C30 8 40 5 50 15", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M70 18C75 8 85 5 95 15", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "35", cy: "20", r: "2", fill: "currentColor" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "65", cy: "20", r: "2", fill: "currentColor" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "50", cy: "15", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "80", cy: "12", r: "1.5", fill: "currentColor" })
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16", children: infoItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card border border-border/60 rounded-[1.25rem] p-6 text-center hover:shadow-[0_20px_40px_-25px_rgba(40,60,40,0.18)] transition-shadow", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { className: "w-5 h-5 text-forest" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs uppercase tracking-[0.2em] text-forest/80 mb-2", children: item.label }),
+      item.lines.map((line, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm ${i === 0 ? "text-forest-deep font-medium" : "text-muted-foreground"} ${i > 0 ? "mt-1" : ""}`, children: line }, i))
+    ] }, item.label)) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-forest text-primary-foreground rounded-[2rem] p-8 sm:p-14 lg:p-16 mb-16 relative overflow-hidden", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative max-w-3xl", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-primary-foreground/70", children: "Perfil Sensorial" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]", children: "Perfil de la Taza" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3", children: perfilItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-primary-foreground/70 shrink-0" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-primary-foreground/90", children: item })
+        ] }, item)) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Presentaciones" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-3 font-serif text-3xl sm:text-4xl text-forest-deep", children: "Disponibles" })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 gap-6 mb-16", children: presentaciones.map((prod) => /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "group bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "aspect-[4/3] overflow-hidden bg-sand relative", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: prod.img, alt: prod.tipo, width: 1024, height: 1024, loading: "lazy", className: "w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5", children: prod.tipo })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-7", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground leading-relaxed mb-5", children: "Café de especialidad de Chiapas, tostado medio, con notas a miel, caramelo y frutas cítricas. Empaque premium con válvula de degasificación." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", children: prod.variantes.map((v) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between rounded-xl bg-sand/60 px-5 py-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium text-forest-deep", children: v.size }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-serif text-lg text-forest", children: [
+              "$",
+              v.price
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: WHATSAPP, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingBag, { className: "w-3 h-3" }),
+                " Comprar"
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: WHATSAPP, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingBag, { className: "w-3 h-3" }),
-                  " Comprar"
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: `${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-3 h-3" }),
-                  " WhatsApp"
-                ] })
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: `${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-3 h-3" }),
+                " WhatsApp"
               ] })
             ] })
-          ] }, v.size)) })
-        ] })
-      ] }) }, prod.tipo)) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto text-center px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-px bg-forest/30 mx-auto mb-8" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("blockquote", { className: "font-serif text-xl sm:text-2xl lg:text-3xl text-forest-deep leading-relaxed", children: '"Disfrutar de un buen café de especialidad es más que un simple placer; es un viaje que conecta culturas y tradiciones, recordándonos la belleza de lo artesanal y el valor de lo auténtico."' }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-px bg-forest/30 mx-auto mt-8" })
-      ] }) })
-    ] })
-  ] });
+          ] })
+        ] }, v.size)) })
+      ] })
+    ] }) }, prod.tipo)) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollReveal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto text-center px-6", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-px bg-forest/30 mx-auto mb-8" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("blockquote", { className: "font-serif text-xl sm:text-2xl lg:text-3xl text-forest-deep leading-relaxed", children: '"Disfrutar de un buen café de especialidad es más que un simple placer; es un viaje que conecta culturas y tradiciones, recordándonos la belleza de lo artesanal y el valor de lo auténtico."' }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-px bg-forest/30 mx-auto mt-8" })
+    ] }) })
+  ] }) });
 }
 function Testimonials() {
   const t = [{
