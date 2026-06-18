@@ -2,6 +2,8 @@ import { r as reactExports, j as jsxRuntimeExports } from "./react.mjs";
 import { c as composeEventHandlers } from "./radix-ui__primitive.mjs";
 import { u as useComposedRefs } from "./radix-ui__react-compose-refs.mjs";
 import { a as createContextScope, c as createContext2 } from "./radix-ui__react-context.mjs";
+import { u as useId } from "./radix-ui__react-id.mjs";
+import { u as useControllableState } from "./@radix-ui/react-use-controllable-state+[...].mjs";
 import { D as DismissableLayer } from "./@radix-ui/react-dismissable-layer+[...].mjs";
 import { F as FocusScope } from "./radix-ui__react-focus-scope.mjs";
 import { P as Portal$1 } from "./radix-ui__react-portal.mjs";
@@ -14,6 +16,41 @@ import { a as createSlot } from "./radix-ui__react-slot.mjs";
 var DIALOG_NAME = "Dialog";
 var [createDialogContext] = createContextScope(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
+var Dialog = (props) => {
+  const {
+    __scopeDialog,
+    children,
+    open: openProp,
+    defaultOpen,
+    onOpenChange,
+    modal = true
+  } = props;
+  const triggerRef = reactExports.useRef(null);
+  const contentRef = reactExports.useRef(null);
+  const [open, setOpen] = useControllableState({
+    prop: openProp,
+    defaultProp: defaultOpen ?? false,
+    onChange: onOpenChange,
+    caller: DIALOG_NAME
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    DialogProvider,
+    {
+      scope: __scopeDialog,
+      triggerRef,
+      contentRef,
+      contentId: useId(),
+      titleId: useId(),
+      descriptionId: useId(),
+      open,
+      onOpenChange: setOpen,
+      onOpenToggle: reactExports.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
+      modal,
+      children
+    }
+  );
+};
+Dialog.displayName = DIALOG_NAME;
 var TRIGGER_NAME = "DialogTrigger";
 var DialogTrigger = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -270,6 +307,7 @@ var DescriptionWarning = ({ contentRef, descriptionId }) => {
   }, [MESSAGE, contentRef, descriptionId]);
   return null;
 };
+var Root = Dialog;
 var Portal = DialogPortal;
 var Overlay = DialogOverlay;
 var Content = DialogContent;
@@ -281,6 +319,7 @@ export {
   Description as D,
   Overlay as O,
   Portal as P,
+  Root as R,
   Title as T,
   Content as a
 };
