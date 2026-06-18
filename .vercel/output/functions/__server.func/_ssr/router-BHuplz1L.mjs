@@ -115,10 +115,10 @@ const Route = createFileRoute("/")({
       content: "Caffeli es una pastelería boutique que crea pasteles artesanales con ingredientes premium. Reserva, compra o recoge en tienda."
     }, {
       property: "og:title",
-      content: "Caffeli — Pastelería boutique"
+      content: "Caffeli — Cafetería, Pastelería y Café de Especialidad"
     }, {
       property: "og:description",
-      content: "Pasteles que convierten momentos en recuerdos. Artesanal, premium, hecho a mano."
+      content: "Disfruta café de especialidad, postres artesanales y lleva a casa nuestro café de origen Chiapas."
     }]
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")
