@@ -743,17 +743,24 @@ function Footer() {
               ingredientes de la más alta calidad.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {[Instagram, Facebook].map((Icon, i) => (
                 <a
-                  key={i}
-                  href="#"
+                  href="https://www.instagram.com/caffeli.mx"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
-                  aria-label="Red social"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Instagram className="w-4 h-4" />
                 </a>
-              ))}
-            </div>
+
+                <a
+                  href="https://www.facebook.com/CAFFELI.MX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+              </div>
           </div>
 
           <div>

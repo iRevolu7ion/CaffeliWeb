@@ -1086,7 +1086,10 @@ function Footer() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "opacity-70", children: "." })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-5 text-sm text-primary-foreground/70 leading-relaxed max-w-xs", children: "Cafetería y pastelería dedicada a crear experiencias dulces, hechas con ingredientes de la más alta calidad." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6 flex items-center gap-3", children: [Instagram, Facebook].map((Icon, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors", "aria-label": "Red social", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "w-4 h-4" }) }, i)) })
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.instagram.com/caffeli.mx", target: "_blank", rel: "noopener noreferrer", className: "w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Instagram, { className: "w-4 h-4" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.facebook.com/CAFFELI.MX", target: "_blank", rel: "noopener noreferrer", className: "w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Facebook, { className: "w-4 h-4" }) })
+        ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs uppercase tracking-[0.25em] text-primary-foreground/60 mb-5", children: "Contacto" }),
