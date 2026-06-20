@@ -917,6 +917,7 @@ function ScrollReveal({
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} ${className}`, children });
 }
 function NuestroCafe() {
+  const MP_CAFE_250 = "https://mpago.la/1dsMUkB";
   const infoItems = [{
     icon: MapPin,
     label: "Origen",
@@ -1020,9 +1021,9 @@ function NuestroCafe() {
               v.price
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: WHATSAPP, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: prod.tipo === "Café Molido" && v.size === "250g" ? MP_CAFE_250 : WHATSAPP, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingBag, { className: "w-3 h-3" }),
-                " Comprar"
+                "Comprar"
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: `${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`, target: "_blank", rel: "noreferrer", className: "inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-3 h-3" }),

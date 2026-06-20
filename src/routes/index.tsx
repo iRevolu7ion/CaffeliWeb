@@ -462,6 +462,7 @@ function ScrollReveal({ children, className = "" }: { children: ReactNode; class
 }
 
 function NuestroCafe() {
+  const MP_CAFE_250 = "https://mpago.la/1dsMUkB";
   const infoItems = [
     {
       icon: MapPin,
@@ -632,13 +633,18 @@ function NuestroCafe() {
                         <div className="flex items-center gap-3">
                           <span className="font-serif text-lg text-forest">${v.price}</span>
                           <div className="flex gap-2">
-                            <a
-                              href={WHATSAPP}
+                           <a
+                              href={
+                                prod.tipo === "Café Molido" && v.size === "250g"
+                                  ? MP_CAFE_250
+                                  : WHATSAPP
+                              }
                               target="_blank"
                               rel="noreferrer"
                               className="inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors"
                             >
-                              <ShoppingBag className="w-3 h-3" /> Comprar
+                              <ShoppingBag className="w-3 h-3" />
+                              Comprar
                             </a>
                             <a
                               href={`${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`}
