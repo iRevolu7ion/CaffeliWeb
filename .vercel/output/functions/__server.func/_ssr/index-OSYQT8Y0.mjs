@@ -643,8 +643,8 @@ const cake2 = "/assets/cake-2-Ze0DUAPo.jpg";
 const cake3 = "/assets/cake-3-t2qiKKd7.jpg";
 const cake4 = "/assets/cake-5-CyWeeQKx.jpg";
 const cake5 = "/assets/cake-4-uM0L-Gdw.jpg";
-const coffeeGroundImg = "/assets/coffee-ground-BmsukkvY.jpg";
-const coffeeBeanImg = "/assets/coffee-bean-Bo9Rwi7b.jpg";
+const ImagenCafe = "/assets/ImagenCafe-DEGEjWgq.jpg";
+const ImagenCafe250 = "/assets/ImagenCafe250-SYlC9pm7.jpg";
 const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 function Index() {
   const [orderOpen, setOrderOpen] = reactExports.useState(false);
@@ -688,7 +688,7 @@ function Hero({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "px-4 sm:px-6 lg:px-10 pt-8 pb-24", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid lg:grid-cols-2 gap-12 lg:gap-20 items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fade-up", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "/Logo Caffeli.png", alt: "Caffeli — Coffee House", className: "h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "/Logo Caffeli.png", alt: "Caffeli — Coffee House", className: "h-44 sm:h-58 lg:h-62 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Sparkles, { className: "w-3.5 h-3.5" }),
           " Artesanal & Premium"
@@ -847,14 +847,11 @@ function CakesOfTheDay(_props) {
   }];
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "cakes", className: "px-4 sm:px-6 lg:px-10 pb-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-2xl", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs uppercase tracking-[0.25em] text-forest/80", children: "Pasteles del día 🚀 NUEVA VERSION" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep", children: [
-          "Hechos hoy, ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic font-normal", children: "listos para ti" }),
-          "."
-        ] })
-      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-2xl", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep", children: [
+        "Hechos hoy, ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic font-normal", children: "listos para ti" }),
+        "."
+      ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground max-w-sm", children: "Aparta tu pastel antes de que se agote. Disponibles únicamente por hoy." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6", children: cakes.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "group bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1", children: [
@@ -944,7 +941,7 @@ function NuestroCafe() {
   const perfilItems = ["Cuerpo cremoso", "Dulzor pronunciado", "Acidez balanceada", "Notas a miel", "Caramelo", "Azúcar morena", "Matices cítricos", "Manzana verde", "Retrogusto limpio y agradable"];
   const presentaciones = [{
     tipo: "Café Molido",
-    img: coffeeGroundImg,
+    img: ImagenCafe,
     variantes: [{
       size: "250g",
       price: 180
@@ -957,7 +954,7 @@ function NuestroCafe() {
     }]
   }, {
     tipo: "Café en Grano",
-    img: coffeeBeanImg,
+    img: ImagenCafe250,
     variantes: [{
       size: "250g",
       price: 170

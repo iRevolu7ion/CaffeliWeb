@@ -31,6 +31,8 @@ import cake4 from "@/assets/cake-5.jpg";
 import cake5 from "@/assets/cake-4.jpg";
 import coffeeGroundImg from "@/assets/coffee-ground.jpg";
 import coffeeBeanImg from "@/assets/coffee-bean.jpg";
+import ImagenCafe from "@/assets/ImagenCafe.jpg";
+import ImagenCafe250 from "@/assets/ImagenCafe250.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -111,7 +113,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
             <img
               src="/Logo Caffeli.png"
               alt="Caffeli — Coffee House"
-              className="h-24 sm:h-28 lg:h-32 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
+              className="h-44 sm:h-58 lg:h-62 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
             />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
@@ -350,7 +352,6 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Pasteles del día 🚀 NUEVA VERSION</span>
             <h2 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
               Hechos hoy, <em className="italic font-normal">listos para ti</em>.
             </h2>
@@ -507,7 +508,7 @@ function NuestroCafe() {
   const presentaciones = [
     {
       tipo: "Café Molido",
-      img: coffeeGroundImg,
+      img: ImagenCafe,
       variantes: [
         { size: "250g", price: 180 },
         { size: "500g", price: 320 },
@@ -516,7 +517,7 @@ function NuestroCafe() {
     },
     {
       tipo: "Café en Grano",
-      img: coffeeBeanImg,
+      img: ImagenCafe250,
       variantes: [
         { size: "250g", price: 170 },
         { size: "500g", price: 310 },
