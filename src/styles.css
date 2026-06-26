@@ -41,31 +41,50 @@
 :root {
   --radius: 1.25rem;
 
-  --background: oklch(0.975 0.012 85);      /* warm cream */
-  --foreground: oklch(0.22 0.025 150);       /* deep ink green */
+  /* Caffeli Palette */
+  --background: oklch(0.950 0.039 73); /* #FFEBD2 crema */
+  --foreground: oklch(0.220 0.025 150); /* texto oscuro */
 
-  --cream: oklch(0.975 0.012 85);
-  --sand: oklch(0.94 0.018 80);
-  --forest: oklch(0.32 0.045 155);
-  --forest-deep: oklch(0.24 0.04 155);
-  --ink: oklch(0.18 0.02 150);
+  --cream: oklch(0.950 0.039 73); /* #FFEBD2 */
+  --sand: oklch(0.922 0.112 116); /* #E1EF97 verde claro */
 
-  --card: oklch(0.98 0.008 85);
+  --forest: oklch(0.380 0.086 134); /* #2E4C18 verde principal */
+  --forest-deep: oklch(0.300 0.070 134); /* verde más profundo */
+
+  --ink: oklch(0.180 0.020 150);
+
+
+  /* UI */
+  --card: oklch(0.975 0.012 85);
   --card-foreground: var(--foreground);
 
+
+  /* Brand */
   --primary: var(--forest);
   --primary-foreground: oklch(0.98 0.01 85);
+
   --secondary: var(--sand);
   --secondary-foreground: var(--forest-deep);
-  --muted: oklch(0.93 0.015 80);
-  --muted-foreground: oklch(0.45 0.02 150);
-  --accent: var(--sand);
-  --accent-foreground: var(--forest-deep);
-  --border: oklch(0.88 0.018 80);
+
+
+  /* Orange Caffeli */
+  --accent: oklch(0.705 0.188 42); /* #FC6F2F */
+  --accent-foreground: oklch(0.98 0.01 85);
+
+
+  /* States */
+  --muted: oklch(0.930 0.015 80);
+  --muted-foreground: oklch(0.450 0.020 150);
+
+  --border: oklch(0.880 0.018 80);
   --ring: var(--forest);
+
+
   --popover: var(--card);
   --popover-foreground: var(--foreground);
+
   --input: var(--border);
+
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.98 0.01 85);
 }

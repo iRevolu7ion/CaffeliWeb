@@ -95,7 +95,7 @@ function Nav({ onOrder }: { onOrder: () => void }) {
         </nav>
         <button
           onClick={onOrder}
-          className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-2.5 text-sm hover:bg-forest-deep transition-colors"
+          className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
         >
           Ordenar
         </button>
@@ -139,7 +139,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
                 Ordenar ahora
               </button>
               <a
-                href="#coffee"
+                href="#cakes"
                 className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
               >
                 Ver catálogo

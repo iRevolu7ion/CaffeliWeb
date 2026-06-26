@@ -679,7 +679,7 @@ function Nav({
   return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "font-serif text-2xl tracking-tight text-forest-deep", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-forest", children: "." }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "hidden md:flex items-center gap-10 text-sm text-muted-foreground", children: links.map((l) => /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: l.href, className: "hover:text-forest transition-colors", children: l.label }, l.href)) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onOrder, className: "inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-2.5 text-sm hover:bg-forest-deep transition-colors", children: "Ordenar" })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onOrder, className: "inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm hover:opacity-90 transition-all hover:-translate-y-0.5", children: "Ordenar" })
   ] }) });
 }
 function Hero({
@@ -705,7 +705,7 @@ function Hero({
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-8 max-w-md text-muted-foreground leading-relaxed", children: "Elaborados diariamente con ingredientes de la más alta calidad. Descubre nuestra colección de postres boutique diseñados para deleitar." }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 flex flex-wrap items-center gap-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onOrder, className: "inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-7 py-3.5 text-sm hover:bg-forest-deep transition-all hover:-translate-y-0.5", children: "Ordenar ahora" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#coffee", className: "inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors", children: "Ver catálogo" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#cakes", className: "inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors", children: "Ver catálogo" })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative fade-up fade-up-delay-2", children: [
