@@ -33,6 +33,12 @@ import coffeeGroundImg from "@/assets/coffee-ground.jpg";
 import coffeeBeanImg from "@/assets/coffee-bean.jpg";
 import ImagenCafe from "@/assets/ImagenCafe.jpg";
 import ImagenCafe250 from "@/assets/ImagenCafe250.jpg";
+import lechespinacoco from "@/assets/lechespinacoco.png";
+import lechesyogurtFresa from "@/assets/lechesyogurtFresa.jpeg";
+import lechesFrutas from "@/assets/lechesFrutas.jpeg";
+import lechesCajeta from "@/assets/lechesCajeta.png";
+import lechesMango from "@/assets/lechesMango.jpeg";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -56,7 +62,6 @@ export const Route = createFileRoute("/")({
 const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 function Index() {
-  
   const [orderOpen, setOrderOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -128,8 +133,8 @@ function Hero({ onOrder }: { onOrder: () => void }) {
               <em className="italic font-normal">recuerdos</em>
             </h1>
             <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
-              Elaborados diariamente con ingredientes de la más alta calidad.
-              Descubre nuestra colección de postres boutique diseñados para deleitar.
+              Elaborados diariamente con ingredientes de la más alta calidad. Descubre nuestra
+              colección de postres boutique diseñados para deleitar.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <button
@@ -175,11 +180,26 @@ function Hero({ onOrder }: { onOrder: () => void }) {
       {/* Feature row */}
       <div className="mx-auto max-w-7xl mt-10 grid sm:grid-cols-3 gap-5">
         {[
-          { icon: Leaf, t: "Ingredientes Frescos", d: "Seleccionados diariamente desde productores locales, desde vainilla de Madagascar hasta el cacao belga de origen único." },
-          { icon: Cake, t: "Calidad Artesanal", d: "Cada pastel es horneado y decorado a mano por nuestros maestros pasteleros en el ritmo de la entrega." },
-          { icon: Sparkles, t: "El arte del pastel", d: "Cada pieza es una pequeña experiencia artesanal pensada para los momentos más grandes." },
+          {
+            icon: Leaf,
+            t: "Ingredientes Frescos",
+            d: "Seleccionados diariamente desde productores locales, desde vainilla de Madagascar hasta el cacao belga de origen único.",
+          },
+          {
+            icon: Cake,
+            t: "Calidad Artesanal",
+            d: "Cada pastel es horneado y decorado a mano por nuestros maestros pasteleros en el ritmo de la entrega.",
+          },
+          {
+            icon: Sparkles,
+            t: "El arte del pastel",
+            d: "Cada pieza es una pequeña experiencia artesanal pensada para los momentos más grandes.",
+          },
         ].map((f) => (
-          <div key={f.t} className="bg-card rounded-2xl p-7 border border-border/60 hover:shadow-[0_20px_40px_-25px_rgba(40,60,40,0.2)] transition-shadow">
+          <div
+            key={f.t}
+            className="bg-card rounded-2xl p-7 border border-border/60 hover:shadow-[0_20px_40px_-25px_rgba(40,60,40,0.2)] transition-shadow"
+          >
             <f.icon className="w-5 h-5 text-forest mb-5" />
             <h3 className="font-serif text-xl text-forest-deep">{f.t}</h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.d}</p>
@@ -209,12 +229,8 @@ function About() {
           <h2 className="mt-5 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
             Una Cafetería <em className="italic font-normal">local</em> nacida del detalle.
           </h2>
-          <p className="mt-7 text-muted-foreground leading-relaxed max-w-lg">
-           asdasdas
-          </p>
-          <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">
-            asdasdasdas
-          </p>
+          <p className="mt-7 text-muted-foreground leading-relaxed max-w-lg">asdasdas</p>
+          <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">asdasdasdas</p>
           <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
             {[
               { n: "12+", l: "Años creando" },
@@ -245,12 +261,15 @@ function Custom({ onOrder }: { onOrder: () => void }) {
             Diseñamos el pastel de tu próxima <em className="italic font-normal">celebración</em>.
           </h2>
           <p className="mt-7 text-primary-foreground/80 leading-relaxed max-w-lg">
-            Bodas, cumpleaños, eventos corporativos o un detalle íntimo. Trabajamos
-            contigo cada capa, sabor y decoración para crear una pieza única que
-            cuente tu historia.
+            Bodas, cumpleaños, eventos corporativos o un detalle íntimo. Trabajamos contigo cada
+            capa, sabor y decoración para crear una pieza única que cuente tu historia.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-primary-foreground/85">
-            {["Consulta personalizada con el chef pastelero", "Degustación de sabores y rellenos", "Entrega o recogida en sucursal"].map((i) => (
+            {[
+              "Consulta personalizada con el chef pastelero",
+              "Degustación de sabores y rellenos",
+              "Entrega o recogida en sucursal",
+            ].map((i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-foreground/70" />
                 {i}
@@ -298,55 +317,67 @@ type Cake = {
 
 function CakesOfTheDay(_props: { onOrder: () => void }) {
   const cakes: Cake[] = [
-  {
-    name: "Tres Leches Fresa",
-    desc: "Pan de vainilla bañado en tres leches con relleno de fresa natural.",
-    img: cake1,
-    tag: "Hoy",
-    sizes: [
-      { label: "Chico", price: 380 },
-      { label: "Mediano", price: 450 },
-      { label: "Grande", price: 580 }
-    ],
-    stock: 3
-  },
-  {
-    name: "Tres Leches Mango",
-    desc: "Tres leches con relleno de mango fresco.",
-    img: cake2,
-    tag: "Disponible",
-    sizes: [
-      { label: "Chico", price: 380 },
-      { label: "Mediano", price: 450 },
-      { label: "Grande", price: 580 }
-    ],
-    stock: 2
-  },
-  {
-    name: "Chocoflan",
-    desc: "Flan cremoso sobre pastel de chocolate con cubierta de cajeta.",
-    img: cake3,
-    tag: "Especial",
-    price: 520,
-    stock: 1
-  },
-  {
-    name: "Rosca de Zanahoria",
-    desc: "Pan húmedo de zanahoria con nuez y queso crema.",
-    img: cake4,
-    tag: "Especial",
-    price: 480,
-    stock: 1
-  },
-  {
-    name: "Rosca Chorreada",
-    desc: "Rosca cubierta con cajeta y nuez caramelizada.",
-    img: cake5,
-    tag: "Especial",
-    price: 550,
-    stock: 1
-  }
-];
+    {
+      name: "Tres Leches Yogurt Fresa",
+      desc: "Pan de vainilla bañado en tres leches con relleno de fresa natural.",
+      img: lechesyogurtFresa,
+      tag: "Hoy",
+      sizes: [
+        { label: "Chico", price: 300 },
+        { label: "Mediano", price: 400 },
+        { label: "Grande", price: 470 },
+      ],
+      stock: 3,
+    },
+    {
+      name: "Tres Leches Yogurt Frutas",
+      desc: "Pan de vainilla cubierto de betun de yogurt fresa",
+      img: lechesFrutas,
+      tag: "Disponible",
+      sizes: [
+        { label: "Chico", price: 300 },
+        { label: "Mediano", price: 400 },
+        { label: "Grande", price: 470 },
+      ],
+      stock: 2,
+    },
+    {
+      name: "Tres leches Piña Coco",
+      desc: "Pan de vainilla con betún, coco rayado y piñá .",
+      img: lechespinacoco,
+      tag: "Disponible",
+      sizes: [
+        { label: "Chico", price: 300 },
+        { label: "Mediano", price: 400 },
+        { label: "Grande", price: 470 },
+      ],
+      stock: 1,
+    },
+    {
+      name: "Tres leches Cajeta",
+      desc: "Pan de vainilla con betún y bañado de cajeta.",
+      img: lechesCajeta,
+      tag: "Disponible",
+      sizes: [
+        { label: "Chico", price: 300 },
+        { label: "Mediano", price: 400 },
+        { label: "Grande", price: 470 },
+      ],
+      stock: 1,
+    },
+    {
+      name: "Tres leches Yogurt Mango",
+      desc: "Pan de vainilla con betún de yogurt mango",
+      img: lechesMango,
+      tag: "Disponible",
+      sizes: [
+        { label: "Chico", price: 300 },
+        { label: "Mediano", price: 400 },
+        { label: "Grande", price: 470 },
+      ],
+      stock: 1,
+    },
+  ];
   return (
     <section id="cakes" className="px-4 sm:px-6 lg:px-10 pb-28">
       <div className="mx-auto max-w-7xl">
@@ -357,8 +388,7 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-sm">
-            Aparta tu pastel antes de que se agote.
-Disponibles únicamente por hoy.
+            Aparta tu pastel antes de que se agote. Disponibles únicamente por hoy.
           </p>
         </div>
 
@@ -382,29 +412,19 @@ Disponibles únicamente por hoy.
                 </span>
               </div>
               <div className="p-7">
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-2xl text-forest-deep">{c.name}</h3>
-                  <span className="font-serif text-xl text-forest">
-                       {c.sizes
-                        ? `Desde $${c.sizes[0].price} por persona`
-                        : `$${c.price}`}
-                  </span>
-                </div>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
                 {c.stock === 1 ? (
-                    <p className="mt-2 text-xs text-red-600 font-medium">
-                      🔥 Última pieza disponible
-                    </p>
-                  ) : (
-                    <p className="mt-2 text-xs text-forest font-medium">
-                      🔥 Quedan {c.stock} disponibles
-                    </p>
-                 )}
+                  <p className="mt-2 text-xs text-red-600 font-medium">
+                    🔥 Última pieza disponible
+                  </p>
+                ) : (
+                  <p className="mt-2 text-xs text-forest font-medium">
+                    🔥 Quedan {c.stock} disponibles
+                  </p>
+                )}
 
                 <div className="mt-6 grid grid-cols-2 gap-2">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-4 py-2.5 text-xs hover:bg-forest-deep transition-colors"
-                  >
+                  <button className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-4 py-2.5 text-xs hover:bg-forest-deep transition-colors">
                     <ShoppingBag className="w-3.5 h-3.5" />
                     Comprar ahora
                   </button>
@@ -441,7 +461,7 @@ function useScrollReveal(threshold = 0.12) {
           observer.unobserve(el);
         }
       },
-      { threshold }
+      { threshold },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -537,17 +557,40 @@ function NuestroCafe() {
             Café de <em className="italic font-normal">especialidad</em>
           </h2>
           <p className="mt-6 text-muted-foreground leading-relaxed max-w-xl mx-auto">
-            Café de especialidad cultivado en Chiapas, seleccionado y tostado para ofrecer una experiencia única en cada taza.
+            Café de especialidad cultivado en Chiapas, seleccionado y tostado para ofrecer una
+            experiencia única en cada taza.
           </p>
           <div className="mt-6 flex justify-center">
-            <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-forest/40">
-              <path d="M10 30C15 15 25 10 35 20C45 30 55 30 65 20C75 10 85 15 90 30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M25 20C30 8 40 5 50 15" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-              <path d="M70 18C75 8 85 5 95 15" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-              <circle cx="35" cy="20" r="2" fill="currentColor"/>
-              <circle cx="65" cy="20" r="2" fill="currentColor"/>
-              <circle cx="50" cy="15" r="1.5" fill="currentColor"/>
-              <circle cx="80" cy="12" r="1.5" fill="currentColor"/>
+            <svg
+              width="120"
+              height="40"
+              viewBox="0 0 120 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-forest/40"
+            >
+              <path
+                d="M10 30C15 15 25 10 35 20C45 30 55 30 65 20C75 10 85 15 90 30"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M25 20C30 8 40 5 50 15"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+              />
+              <path
+                d="M70 18C75 8 85 5 95 15"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+              />
+              <circle cx="35" cy="20" r="2" fill="currentColor" />
+              <circle cx="65" cy="20" r="2" fill="currentColor" />
+              <circle cx="50" cy="15" r="1.5" fill="currentColor" />
+              <circle cx="80" cy="12" r="1.5" fill="currentColor" />
             </svg>
           </div>
         </ScrollReveal>
@@ -563,9 +606,14 @@ function NuestroCafe() {
                 <div className="mx-auto w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center mb-4">
                   <item.icon className="w-5 h-5 text-forest" />
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-forest/80 mb-2">{item.label}</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-forest/80 mb-2">
+                  {item.label}
+                </div>
                 {item.lines.map((line, i) => (
-                  <p key={i} className={`text-sm ${i === 0 ? "text-forest-deep font-medium" : "text-muted-foreground"} ${i > 0 ? "mt-1" : ""}`}>
+                  <p
+                    key={i}
+                    className={`text-sm ${i === 0 ? "text-forest-deep font-medium" : "text-muted-foreground"} ${i > 0 ? "mt-1" : ""}`}
+                  >
                     {line}
                   </p>
                 ))}
@@ -580,8 +628,12 @@ function NuestroCafe() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
             <div className="relative max-w-3xl">
-              <span className="text-xs uppercase tracking-[0.25em] text-primary-foreground/70">Perfil Sensorial</span>
-              <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">Perfil de la Taza</h3>
+              <span className="text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
+                Perfil Sensorial
+              </span>
+              <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">
+                Perfil de la Taza
+              </h3>
               <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
                 {perfilItems.map((item) => (
                   <div key={item} className="flex items-center gap-3">
@@ -597,7 +649,9 @@ function NuestroCafe() {
         {/* Presentaciones */}
         <ScrollReveal>
           <div className="mb-6">
-            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Presentaciones</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">
+              Presentaciones
+            </span>
             <h3 className="mt-3 font-serif text-3xl sm:text-4xl text-forest-deep">Disponibles</h3>
           </div>
         </ScrollReveal>
@@ -621,7 +675,8 @@ function NuestroCafe() {
                 </div>
                 <div className="p-7">
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                    Café de especialidad de Chiapas, tostado medio, con notas a miel, caramelo y frutas cítricas. Empaque premium con válvula de degasificación.
+                    Café de especialidad de Chiapas, tostado medio, con notas a miel, caramelo y
+                    frutas cítricas. Empaque premium con válvula de degasificación.
                   </p>
                   <div className="space-y-3">
                     {prod.variantes.map((v) => (
@@ -633,7 +688,7 @@ function NuestroCafe() {
                         <div className="flex items-center gap-3">
                           <span className="font-serif text-lg text-forest">${v.price}</span>
                           <div className="flex gap-2">
-                           <a
+                            <a
                               href={
                                 prod.tipo === "Café Molido" && v.size === "250g"
                                   ? MP_CAFE_250
@@ -670,7 +725,9 @@ function NuestroCafe() {
           <div className="max-w-4xl mx-auto text-center px-6">
             <div className="w-12 h-px bg-forest/30 mx-auto mb-8" />
             <blockquote className="font-serif text-xl sm:text-2xl lg:text-3xl text-forest-deep leading-relaxed">
-              "Disfrutar de un buen café de especialidad es más que un simple placer; es un viaje que conecta culturas y tradiciones, recordándonos la belleza de lo artesanal y el valor de lo auténtico."
+              "Disfrutar de un buen café de especialidad es más que un simple placer; es un viaje
+              que conecta culturas y tradiciones, recordándonos la belleza de lo artesanal y el
+              valor de lo auténtico."
             </blockquote>
             <div className="w-12 h-px bg-forest/30 mx-auto mt-8" />
           </div>
@@ -745,28 +802,28 @@ function Footer() {
               Caffeli<span className="opacity-70">.</span>
             </div>
             <p className="mt-5 text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
-              Cafetería y pastelería dedicada a crear experiencias dulces, hechas con
-              ingredientes de la más alta calidad.
+              Cafetería y pastelería dedicada a crear experiencias dulces, hechas con ingredientes
+              de la más alta calidad.
             </p>
             <div className="mt-6 flex items-center gap-3">
-                <a
-                  href="https://www.instagram.com/caffeli.mx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
+              <a
+                href="https://www.instagram.com/caffeli.mx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
 
-                <a
-                  href="https://www.facebook.com/CAFFELI.MX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-              </div>
+              <a
+                href="https://www.facebook.com/CAFFELI.MX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -792,9 +849,14 @@ function Footer() {
               Horario
             </div>
             <ul className="space-y-3 text-sm text-primary-foreground/85">
-              <li className="flex justify-between gap-6"><span>Lunes (solo pasteleria) </span><span>9:00 – 16:00 </span></li>
-              <li className="flex justify-between gap-6"><span>Martes - Domingo (cafeteria y pasteleria)</span><span>9:00 – 22:30</span></li>
-              
+              <li className="flex justify-between gap-6">
+                <span>Lunes (solo pasteleria) </span>
+                <span>9:00 – 16:00 </span>
+              </li>
+              <li className="flex justify-between gap-6">
+                <span>Martes - Domingo (cafeteria y pasteleria)</span>
+                <span>9:00 – 22:30</span>
+              </li>
             </ul>
           </div>
 
@@ -824,8 +886,12 @@ function Footer() {
         <div className="mt-12 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row justify-between gap-3 text-xs text-primary-foreground/60">
           <div>© 2026 Caffeli. Todos los derechos reservados.</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary-foreground">Aviso de Privacidad</a>
-            <a href="#" className="hover:text-primary-foreground">Términos & Condiciones</a>
+            <a href="#" className="hover:text-primary-foreground">
+              Aviso de Privacidad
+            </a>
+            <a href="#" className="hover:text-primary-foreground">
+              Términos & Condiciones
+            </a>
           </div>
         </div>
       </div>

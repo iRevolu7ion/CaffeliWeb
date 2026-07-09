@@ -638,13 +638,13 @@ function CustomSteps({
 const heroCake = "/assets/hero-cake-CG2xIZS5.jpg";
 const aboutImg = "/assets/about-BQD2vD66.jpg";
 const customImg = "/assets/custom-D0NOOPZh.jpg";
-const cake1 = "/assets/cake-1-BhSIyIIM.jpg";
-const cake2 = "/assets/cake-2-Ze0DUAPo.jpg";
-const cake3 = "/assets/cake-3-t2qiKKd7.jpg";
-const cake4 = "/assets/cake-5-CyWeeQKx.jpg";
-const cake5 = "/assets/cake-4-uM0L-Gdw.jpg";
 const ImagenCafe = "/assets/ImagenCafe-DEGEjWgq.jpg";
 const ImagenCafe250 = "/assets/ImagenCafe250-SYlC9pm7.jpg";
+const lechespinacoco = "/assets/lechespinacoco-Df0aUm26.png";
+const lechesyogurtFresa = "/assets/lechesyogurtFresa-CAeArmqY.jpeg";
+const lechesFrutas = "/assets/lechesFrutas-CZDgNGHl.jpeg";
+const lechesCajeta = "/assets/lechesCajeta-CIb5GM7W.png";
+const lechesMango = "/assets/lechesMango-BX2duRV4.jpeg";
 const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 function Index() {
   const [orderOpen, setOrderOpen] = reactExports.useState(false);
@@ -792,57 +792,84 @@ function Custom({
 }
 function CakesOfTheDay(_props) {
   const cakes = [{
-    name: "Tres Leches Fresa",
+    name: "Tres Leches Yogurt Fresa",
     desc: "Pan de vainilla bañado en tres leches con relleno de fresa natural.",
-    img: cake1,
+    img: lechesyogurtFresa,
     tag: "Hoy",
     sizes: [{
       label: "Chico",
-      price: 380
+      price: 300
     }, {
       label: "Mediano",
-      price: 450
+      price: 400
     }, {
       label: "Grande",
-      price: 580
+      price: 470
     }],
     stock: 3
   }, {
-    name: "Tres Leches Mango",
-    desc: "Tres leches con relleno de mango fresco.",
-    img: cake2,
+    name: "Tres Leches Yogurt Frutas",
+    desc: "Pan de vainilla cubierto de betun de yogurt fresa",
+    img: lechesFrutas,
     tag: "Disponible",
     sizes: [{
       label: "Chico",
-      price: 380
+      price: 300
     }, {
       label: "Mediano",
-      price: 450
+      price: 400
     }, {
       label: "Grande",
-      price: 580
+      price: 470
     }],
     stock: 2
   }, {
-    name: "Chocoflan",
-    desc: "Flan cremoso sobre pastel de chocolate con cubierta de cajeta.",
-    img: cake3,
-    tag: "Especial",
-    price: 520,
+    name: "Tres leches Piña Coco",
+    desc: "Pan de vainilla con betún, coco rayado y piñá .",
+    img: lechespinacoco,
+    tag: "Disponible",
+    sizes: [{
+      label: "Chico",
+      price: 300
+    }, {
+      label: "Mediano",
+      price: 400
+    }, {
+      label: "Grande",
+      price: 470
+    }],
     stock: 1
   }, {
-    name: "Rosca de Zanahoria",
-    desc: "Pan húmedo de zanahoria con nuez y queso crema.",
-    img: cake4,
-    tag: "Especial",
-    price: 480,
+    name: "Tres leches Cajeta",
+    desc: "Pan de vainilla con betún y bañado de cajeta.",
+    img: lechesCajeta,
+    tag: "Disponible",
+    sizes: [{
+      label: "Chico",
+      price: 300
+    }, {
+      label: "Mediano",
+      price: 400
+    }, {
+      label: "Grande",
+      price: 470
+    }],
     stock: 1
   }, {
-    name: "Rosca Chorreada",
-    desc: "Rosca cubierta con cajeta y nuez caramelizada.",
-    img: cake5,
-    tag: "Especial",
-    price: 550,
+    name: "Tres leches Yogurt Mango",
+    desc: "Pan de vainilla con betún de yogurt mango",
+    img: lechesMango,
+    tag: "Disponible",
+    sizes: [{
+      label: "Chico",
+      price: 300
+    }, {
+      label: "Mediano",
+      price: 400
+    }, {
+      label: "Grande",
+      price: 470
+    }],
     stock: 1
   }];
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "cakes", className: "px-4 sm:px-6 lg:px-10 pb-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl", children: [
@@ -860,10 +887,6 @@ function CakesOfTheDay(_props) {
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5", children: c.tag })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-7", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-baseline justify-between gap-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-serif text-2xl text-forest-deep", children: c.name }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-serif text-xl text-forest", children: c.sizes ? `Desde $${c.sizes[0].price} por persona` : `$${c.price}` })
-        ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground leading-relaxed", children: c.desc }),
         c.stock === 1 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-xs text-red-600 font-medium", children: "🔥 Última pieza disponible" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-xs text-forest font-medium", children: [
           "🔥 Quedan ",
