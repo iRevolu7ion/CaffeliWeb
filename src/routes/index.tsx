@@ -40,7 +40,7 @@ import lechesCajeta from "@/assets/lechesCajeta.png";
 import lechesMango from "@/assets/lechesMango.jpeg";
 import CajetaPremium from "@/assets/FotoPremiumPastel.jpeg";
 import SobreNosotros from "@/assets/SobreNosotros.jpeg";
-
+import FaceImage from "@/assets/FaceImage.jpeg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -185,7 +185,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
           <div className="relative fade-up fade-up-delay-2">
             <div className="aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-cream shadow-[0_30px_80px_-30px_rgba(40,60,40,0.25)]">
               <img
-                src={heroCake}
+                src={FaceImage}
                 alt="Pastel boutique de tres pisos decorado con flores"
                 width={1024}
                 height={1024}
