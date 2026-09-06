@@ -115,12 +115,17 @@ export function OrderModal({
     onOpenChange(v);
   };
   const sendCatalog = () => {
-  const m = `...`;
+  const m = encodeURIComponent(`*NUEVO PEDIDO DE CATÁLOGO — CAFFELI*
 
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${m}`,
-    "_blank"
-  );
+*Nombre:* ${catalog.name}
+*Teléfono:* ${catalog.phone}
+*Pastel:* ${catalog.category} ${catalog.cake}
+*Tamaño:* ${catalog.size}
+*Fecha de recogida:* ${catalog.date}
+*Lugar:* Sucursal Caffeli
+${catalog.notes ? `*Notas:* ${catalog.notes}` : ""}`);
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${m}`, "_blank");
 
   handleOpenChange(false);
 };
@@ -131,26 +136,23 @@ export function OrderModal({
       ? custom.otraCubierta
       : custom.cubierta;
 
-  const fotoLine = custom.fotoReferencia
-    ? "%0A*Foto de referencia:* Sí (adjuntaré la imagen en el chat)"
-    : "";
+  const m = encodeURIComponent(`*NUEVO PEDIDO PERSONALIZADO — CAFFELI*
 
-  const m = `* NUEVO PEDIDO PERSONALIZADO — CAFFELI*%0A
+*Nombre:* ${custom.name}
+*Teléfono:* ${custom.phone}
+*Fecha de recogida:* ${custom.date}
+*Lugar:* Sucursal Caffeli
 
-━━━━━━━━━━━━━━━%0A
-*Nombre:* ${custom.name}%0A
-*Teléfono:* ${custom.phone}%0A
-*Fecha de entrega:* ${custom.date}%0A
-━━━━━━━━━━━━━━━%0A
-*Tipo:* ${custom.tipo}%0A
-*Biscocho:* ${custom.biscocho}%0A
-*Relleno:* ${custom.relleno}%0A
-*Cubierta:* ${cubiertaFinal}%0A
-*Número de personas:* ${custom.personas}%0A
-━━━━━━━━━━━━━━━%0A
-*Temática:* ${custom.tematica}%0A
-*Toppings:* ${custom.toppings}%0A
-${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}${fotoLine}`;
+*Tipo:* ${custom.tipo}
+*Biscocho:* ${custom.biscocho}
+*Relleno:* ${custom.relleno}
+*Cubierta:* ${cubiertaFinal}
+*Número de personas:* ${custom.personas}
+
+*Temática:* ${custom.tematica}
+*Toppings:* ${custom.toppings}
+${custom.notas ? `*Solicitudes especiales:* ${custom.notas}` : ""}
+${custom.fotoReferencia ? "*Foto de referencia:* Sí (la adjuntaré en el chat)" : ""}`);
 
   if (custom.fotoReferencia) {
     try {
@@ -164,10 +166,7 @@ ${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}${fotoLine}
     }
   }
 
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${m}`,
-    "_blank"
-  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${m}`, "_blank");
 
   handleOpenChange(false);
 };
@@ -219,6 +218,9 @@ ${custom.notas ? `%0A*Solicitudes especiales:* ${custom.notas}` : ""}${fotoLine}
               ? "Selecciona una opción para comenzar tu pedido."
               : `Paso ${step + 1} de ${totalSteps}`}
           </DialogDescription>
+          <p className="mt-2 text-xs font-medium text-forest">
+            Todos los pedidos se recogen únicamente en sucursal.
+          </p>
 
           {mode !== "choose" && (
             <div className="mt-4 h-1 w-full bg-sand rounded-full overflow-hidden">
@@ -433,7 +435,7 @@ function CatalogSteps({
             ))}
           </div>
         </Field>
-        <Field label="Fecha de recogida">
+        <Field label="Fecha de recogida en sucursal">
           <input
             type="date"
             className={inputCls}
@@ -514,7 +516,7 @@ function CustomSteps({
             />
           </Field>
         </div>
-        <Field label="Fecha de entrega">
+        <Field label="Fecha de recogida en sucursal">
           <input
             type="date"
             className={inputCls}

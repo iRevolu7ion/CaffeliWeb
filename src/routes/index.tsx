@@ -298,7 +298,7 @@ function Custom({ onOrder }: { onOrder: () => void }) {
             {[
               "Consulta personalizada con el chef pastelero",
               "Degustación de sabores y rellenos",
-              "Entrega o recogida en sucursal",
+              "Recogida de pedidos en sucursal",
             ].map((i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-foreground/70" />
@@ -443,19 +443,10 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
               </div>
               <div className="p-7">
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
-                {c.stock === 1 ? (
-                  <p className="mt-2 text-xs text-red-600 font-medium">
-                    🔥 Última pieza disponible
-                  </p>
-                ) : (
-                  <p className="mt-2 text-xs text-forest font-medium">
-                    🔥 Quedan {c.stock} disponibles
-                  </p>
-                )}
 
                 <div className="mt-6 space-y-2">
                   {c.sizes?.map((size) => {
-                    const mpUrl = MP_CAKE_LINKS[c.name]?.[size.label] || "#";
+                    const mpUrl = MP_CAKE_LINKS[c.name]?.[size.label];
                     return (
                       <div
                         key={size.label}
@@ -467,11 +458,18 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
                         </div>
                         <a
                           href={mpUrl}
-                          aria-disabled={!MP_CAKE_LINKS[c.name]?.[size.label]}
-                          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors"
+                          aria-disabled={!mpUrl}
+                          onClick={(event) => {
+                            if (!mpUrl) event.preventDefault();
+                          }}
+                          className={`inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] transition-colors ${
+                            mpUrl
+                              ? "bg-forest text-primary-foreground hover:bg-forest-deep"
+                              : "cursor-not-allowed bg-muted text-muted-foreground"
+                          }`}
                         >
                           <ShoppingBag className="w-3 h-3" />
-                          Comprar
+                          {mpUrl ? "Comprar" : "Próximamente"}
                         </a>
                       </div>
                     );
@@ -480,13 +478,13 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
 
                 <div className="grid grid-cols-1 gap-2">
                   <a
-                    href={`${WHATSAPP}%20-%20${encodeURIComponent(c.name)}`}
+                      href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${c.name}? ¿Qué tamaños tienen disponibles? Pasaría a recogerlo en sucursal.`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
-                    WhatsApp
+                    Consultar disponibilidad
                   </a>
                 </div>
               </div>
@@ -582,7 +580,7 @@ function NuestroCafe() {
       variantes: [
         { size: "250g", price: 179, mpUrl: "https://mpago.la/1mAeXcb" },
         { size: "500g", price: 259, mpUrl: "https://mpago.la/111Zw2H" },
-        { size: "1kg", price: 580, mpUrl: "https://mpago.la/111Zw2H" },
+        { size: "1kg", price: 580, mpUrl: "" },
       ],
     },
     {
@@ -591,7 +589,7 @@ function NuestroCafe() {
       variantes: [
         { size: "250g", price: 179, mpUrl: "https://mpago.la/1mAeXcb" },
         { size: "500g", price: 259, mpUrl: "https://mpago.la/111Zw2H" },
-        { size: "1kg", price: 560, mpUrl: "https://mpago.la/111Zw2H" },
+        { size: "1kg", price: 560, mpUrl: "" },
       ],
     },
   ];
@@ -738,22 +736,29 @@ function NuestroCafe() {
                           <span className="font-serif text-lg text-forest">${v.price}</span>
                           <div className="flex gap-2">
                             <a
-                              href={v.mpUrl || "#"}
+                              href={v.mpUrl || undefined}
                               aria-disabled={!v.mpUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-forest text-primary-foreground px-3 py-1.5 text-[11px] hover:bg-forest-deep transition-colors"
+                              onClick={(event) => {
+                                if (!v.mpUrl) event.preventDefault();
+                              }}
+                              className={`inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] transition-colors ${
+                                v.mpUrl
+                                  ? "bg-forest text-primary-foreground hover:bg-forest-deep"
+                                  : "cursor-not-allowed bg-muted text-muted-foreground"
+                              }`}
                             >
                               <ShoppingBag className="w-3 h-3" />
-                              Comprar
+                              {v.mpUrl ? "Comprar" : "Próximamente"}
                             </a>
                             <a
-                              href={`${WHATSAPP}%20-%20${encodeURIComponent(prod.tipo + " " + v.size)}`}
+                              href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${prod.tipo} de ${v.size}? Pasaría a recogerlo en sucursal.`)}`}
                               target="_blank"
                               rel="noreferrer"
                               className="inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors"
                             >
-                              <MessageCircle className="w-3 h-3" /> WhatsApp
+                              <MessageCircle className="w-3 h-3" /> Consultar
                             </a>
                           </div>
                         </div>
