@@ -53,6 +53,14 @@ import CajetaPremium from "@/assets/FotoPremiumPastel.jpeg";
 import SobreNosotros from "@/assets/SobreNosotros.jpeg";
 import FaceImage from "@/assets/FaceImage.jpeg";
 import CaffeliNBG from "@/assets/Logo Caffeli - NBG.png";
+import FrappeOreo from "@/assets/FrappeOreo.jpeg";
+import CafeRocas from "@/assets/CafeRocas.jpeg"
+import AvocadoToast from "@/assets/AvocadoToast.jpeg"
+import AvocadoToast2 from "@/assets/AvocadoToast2.jpeg"
+import DesayunoCaffeli from "@/assets/DesayunoCaffeli.jpeg"
+import Postres from "@/assets/Postres.jpeg"
+import Panini from "@/assets/Panini.jpeg"
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -522,10 +530,10 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
 
 function Cafeterias() {
   const galleryItems = [
-    { name: "Momentos dulces", category: "Postres", img: gallery1 },
-    { name: "Rebanadas recién hechas", category: "Pastelería", img: gallery2 },
-    { name: "Pan del día", category: "Panadería", img: gallery3 },
-    { name: "Creaciones para compartir", category: "Especiales", img: gallery4 },
+    { name: "Momentos dulces", category: "Postres", img: Postres },
+    { name: "Hechos con amor", category: "Desayunos", img: DesayunoCaffeli },
+    { name: "Paninos para ti", category: "Comidas", img: Panini },
+    { name: "Nuestras bebidas", category: "Especiales", img: CafeRocas },
   ];
 
   return (
@@ -533,13 +541,14 @@ function Cafeterias() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Cafeterías</span>
+            <span className="text-4xl uppercase tracking-[0.25em] text-forest/80">Cafeterías</span>
+            <p className="text-4xl uppercase tracking-[0.25em] text-forest/80">Sucursal Jiménez</p>
             <h2 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
               Algo rico para cada <em className="italic font-normal">momento</em>.
             </h2>
           </div>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
-            Descubre lo que preparamos para acompañar tu café: bebidas, comida y postres hechos para
+            Descubre lo que preparamos para acompañar tu experiencia en Caffeli: bebidas, comida y postres hechos para
             disfrutarse sin prisa.
           </p>
         </div>
@@ -571,6 +580,18 @@ function Cafeterias() {
             </article>
           ))}
         </div>
+        <div className="mt-10 overflow-hidden rounded-[1.5rem] bg-forest">
+        <video autoPlay loop
+          className="w-full aspect-video object-cover"
+          src="/videos/Cafeteria.mp4"
+          controls
+          muted
+          playsInline
+          poster="/images/poster-cafeteria.jpg"
+        >
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
       </div>
     </section>
   );
