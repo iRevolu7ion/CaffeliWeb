@@ -2,6 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import { OrderModal } from "@/components/OrderModal";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   Instagram,
   Facebook,
   MapPin,
@@ -31,6 +38,10 @@ import cake4 from "@/assets/cake-5.jpg";
 import cake5 from "@/assets/cake-4.jpg";
 import coffeeGroundImg from "@/assets/coffee-ground.jpg";
 import coffeeBeanImg from "@/assets/coffee-bean.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
 import ImagenCafe from "@/assets/ImagenCafe.jpg";
 import ImagenCafe250 from "@/assets/ImagenCafe250.jpg";
 import lechespinacoco from "@/assets/lechespinacoco.png";
@@ -41,6 +52,7 @@ import lechesMango from "@/assets/lechesMango.jpeg";
 import CajetaPremium from "@/assets/FotoPremiumPastel.jpeg";
 import SobreNosotros from "@/assets/SobreNosotros.jpeg";
 import FaceImage from "@/assets/FaceImage.jpeg";
+import CaffeliNBG from "@/assets/Logo Caffeli - NBG.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -100,6 +112,7 @@ function Index() {
       <About />
       <Custom onOrder={() => setOrderOpen(true)} />
       <CakesOfTheDay onOrder={() => setOrderOpen(true)} />
+      <Cafeterias />
       <NuestroCafe />
       <Testimonials />
       <Footer />
@@ -113,6 +126,7 @@ function Nav({ onOrder }: { onOrder: () => void }) {
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
     { label: "Pasteles", href: "#custom" },
+    { label: "Cafeterías", href: "#cafeterias" },
     { label: "Nuestro Café", href: "#coffee" },
   ];
   return (
@@ -142,18 +156,18 @@ function Nav({ onOrder }: { onOrder: () => void }) {
 function Hero({ onOrder }: { onOrder: () => void }) {
   return (
     <section className="px-4 sm:px-6 lg:px-10 pt-8 pb-24">
-      <div className="mx-auto max-w-7xl rounded-[2rem] bg-sand/70 p-6 sm:p-10 lg:p-16 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl rounded-[2rem] bg-forest p-6 sm:p-10 lg:p-16 relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="fade-up">
             <img
-              src="/Logo Caffeli.png"
+              src={CaffeliNBG}
               alt="Caffeli — Coffee House"
               className="h-44 sm:h-58 lg:h-62 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
             />
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-forest/80 mb-8">
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cream mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
             </span>
-            <h1 className="font-serif text-[2.75rem] sm:text-6xl lg:text-7xl leading-[1.02] text-forest-deep">
+            <h1 className="font-serif text-[2.75rem] sm:text-6xl lg:text-7xl leading-[1.02] text-cream">
               Pasteles que
               <br />
               convierten
@@ -162,20 +176,20 @@ function Hero({ onOrder }: { onOrder: () => void }) {
               <br />
               <em className="italic font-normal">recuerdos</em>
             </h1>
-            <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
+            <p className="mt-8 max-w-md text-cream leading-relaxed">
               Elaborados diariamente con ingredientes de la más alta calidad. Descubre nuestra
               colección de postres boutique diseñados para deleitar.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <button
                 onClick={onOrder}
-                className="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground px-7 py-3.5 text-sm hover:bg-forest-deep transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-sand text-black px-7 py-3.5 text-sm hover:bg-cream transition-all hover:-translate-y-2.5"
               >
                 Ordenar ahora
               </button>
               <a
                 href="#cakes"
-                className="inline-flex items-center gap-2 rounded-full border border-forest/30 text-forest-deep px-7 py-3.5 text-sm hover:bg-cream transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-sand text-black px-7 py-3.5 text-sm hover:bg-cream transition-all hover:-translate-y-2.5"
               >
                 Ver catálogo
               </a>
@@ -422,71 +436,137 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cakes.map((c) => (
+        <Carousel
+          opts={{ align: "start", loop: false }}
+          className="mx-auto w-full max-w-[calc(100%-2rem)] sm:max-w-none"
+        >
+          <CarouselContent className="-ml-4">
+            {cakes.map((c) => (
+              <CarouselItem key={c.name} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                <article className="group h-full bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1">
+                  <div className="aspect-[4/5] overflow-hidden bg-sand relative">
+                    <img
+                      src={c.img}
+                      alt={c.name}
+                      width={900}
+                      height={1100}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]"
+                    />
+                    <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5">
+                      {c.tag}
+                    </span>
+                  </div>
+                  <div className="p-7">
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+
+                    <div className="mt-6 space-y-2">
+                      {c.sizes?.map((size) => {
+                        const mpUrl = MP_CAKE_LINKS[c.name]?.[size.label];
+                        return (
+                          <div
+                            key={size.label}
+                            className="flex items-center justify-between rounded-xl bg-sand/60 px-4 py-2.5"
+                          >
+                            <div>
+                              <span className="text-sm font-medium text-forest-deep">
+                                {size.label}
+                              </span>
+                              <span className="ml-2 text-sm text-muted-foreground">
+                                ${size.price}
+                              </span>
+                            </div>
+                            <a
+                              href={mpUrl}
+                              aria-disabled={!mpUrl}
+                              onClick={(event) => {
+                                if (!mpUrl) event.preventDefault();
+                              }}
+                              className={`inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] transition-colors ${
+                                mpUrl
+                                  ? "bg-forest text-primary-foreground hover:bg-forest-deep"
+                                  : "cursor-not-allowed bg-muted text-muted-foreground"
+                              }`}
+                            >
+                              <ShoppingBag className="w-3 h-3" />
+                              {mpUrl ? "Comprar" : "Próximamente"}
+                            </a>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-2">
+                      <a
+                        href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${c.name}? ¿Qué tamaños tienen disponibles? Pasaría a recogerlo en sucursal.`)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        Consultar disponibilidad
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="-left-3 sm:-left-12" />
+          <CarouselNext className="-right-3 sm:-right-12" />
+        </Carousel>
+      </div>
+    </section>
+  );
+}
+
+function Cafeterias() {
+  const galleryItems = [
+    { name: "Momentos dulces", category: "Postres", img: gallery1 },
+    { name: "Rebanadas recién hechas", category: "Pastelería", img: gallery2 },
+    { name: "Pan del día", category: "Panadería", img: gallery3 },
+    { name: "Creaciones para compartir", category: "Especiales", img: gallery4 },
+  ];
+
+  return (
+    <section id="cafeterias" className="px-4 sm:px-6 lg:px-10 pb-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+          <div className="max-w-2xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-forest/80">Cafeterías</span>
+            <h2 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
+              Algo rico para cada <em className="italic font-normal">momento</em>.
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-sm leading-relaxed">
+            Descubre lo que preparamos para acompañar tu café: bebidas, comida y postres hechos para
+            disfrutarse sin prisa.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {galleryItems.map((item, index) => (
             <article
-              key={c.name}
-              className="group bg-card rounded-[1.5rem] overflow-hidden border border-border/60 hover:shadow-[0_30px_60px_-30px_rgba(40,60,40,0.25)] transition-all hover:-translate-y-1"
+              key={item.name}
+              className={`group overflow-hidden rounded-[1.5rem] bg-card border border-border/60 ${
+                index === 1 || index === 2 ? "lg:mt-10" : ""
+              }`}
             >
-              <div className="aspect-[4/5] overflow-hidden bg-sand relative">
+              <div className="aspect-[4/5] overflow-hidden bg-sand">
                 <img
-                  src={c.img}
-                  alt={c.name}
+                  src={item.img}
+                  alt={`${item.category}: ${item.name}`}
                   width={900}
                   height={1100}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]"
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
                 />
-                <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-cream/95 text-forest-deep rounded-full px-3 py-1.5">
-                  {c.tag}
-                </span>
               </div>
-              <div className="p-7">
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
-
-                <div className="mt-6 space-y-2">
-                  {c.sizes?.map((size) => {
-                    const mpUrl = MP_CAKE_LINKS[c.name]?.[size.label];
-                    return (
-                      <div
-                        key={size.label}
-                        className="flex items-center justify-between rounded-xl bg-sand/60 px-4 py-2.5"
-                      >
-                        <div>
-                          <span className="text-sm font-medium text-forest-deep">{size.label}</span>
-                          <span className="ml-2 text-sm text-muted-foreground">${size.price}</span>
-                        </div>
-                        <a
-                          href={mpUrl}
-                          aria-disabled={!mpUrl}
-                          onClick={(event) => {
-                            if (!mpUrl) event.preventDefault();
-                          }}
-                          className={`inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] transition-colors ${
-                            mpUrl
-                              ? "bg-forest text-primary-foreground hover:bg-forest-deep"
-                              : "cursor-not-allowed bg-muted text-muted-foreground"
-                          }`}
-                        >
-                          <ShoppingBag className="w-3 h-3" />
-                          {mpUrl ? "Comprar" : "Próximamente"}
-                        </a>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="grid grid-cols-1 gap-2">
-                  <a
-                      href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${c.name}? ¿Qué tamaños tienen disponibles? Pasaría a recogerlo en sucursal.`)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    Consultar disponibilidad
-                  </a>
-                </div>
+              <div className="p-4 sm:p-5">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-forest/70">
+                  {item.category}
+                </span>
+                <h3 className="mt-2 font-serif text-xl text-forest-deep">{item.name}</h3>
               </div>
             </article>
           ))}
@@ -918,15 +998,16 @@ function Footer() {
             <p className="text-sm text-primary-foreground/70 mb-4">
               Recibe nuestra carta de temporada cada mes.
             </p>
-            <form className="flex gap-2">
+            {/* Cambiamos a columna en móviles y a fila a partir de pantallas pequeñas (sm:) */}
+            <form className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Tu correo"
-                className="flex-1 bg-primary-foreground/10 border border-primary-foreground/15 rounded-full px-4 py-2.5 text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-primary-foreground/40"
+                className="w-full sm:flex-1 bg-primary-foreground/10 border border-primary-foreground/15 rounded-full px-4 py-2.5 text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-primary-foreground/40"
               />
               <button
                 type="submit"
-                className="rounded-full bg-cream text-forest-deep px-5 py-2.5 text-sm hover:bg-sand transition-colors"
+                className="w-full sm:w-auto whitespace-nowrap rounded-full bg-cream text-forest-deep px-6 py-2.5 text-sm hover:bg-sand transition-colors font-medium"
               >
                 Suscribir
               </button>
