@@ -157,9 +157,9 @@ function Nav({ onOrder }: { onOrder: () => void }) {
         <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep">
           <span className="text-forest">.</span>
         </a>
-        <nav className="hidden md:flex items-center gap-10 text-sm text-muted-foreground">
+        <nav className="flex min-w-0 flex-1 items-center justify-center gap-5 overflow-x-auto px-4 text-sm text-muted-foreground sm:gap-7 lg:gap-10">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-forest transition-colors">
+            <a key={l.href} href={l.href} className="shrink-0 whitespace-nowrap hover:text-forest transition-colors">
               {l.label}
             </a>
           ))}
