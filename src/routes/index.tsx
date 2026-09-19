@@ -60,7 +60,7 @@ import AvocadoToast2 from "@/assets/AvocadoToast2.jpeg"
 import DesayunoCaffeli from "@/assets/DesayunoCaffeli.jpeg"
 import Postres from "@/assets/Postres.jpeg"
 import Panini from "@/assets/Panini.jpeg"
-
+import SelloBlanco from "@/assets/SELLO_BLANCO.png"
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -82,6 +82,20 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
+
+const CAFFELI_START_DATE = new Date(2014, 1, 1);
+
+function getDaysSinceCaffeliStarted() {
+  const today = new Date();
+  const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const startUtc = Date.UTC(
+    CAFFELI_START_DATE.getFullYear(),
+    CAFFELI_START_DATE.getMonth(),
+    CAFFELI_START_DATE.getDate(),
+  );
+
+  return Math.floor((todayUtc - startUtc) / (1000 * 60 * 60 * 24));
+}
 
 const MP_CAKE_LINKS: Record<string, Record<string, string>> = {
   "Tres Leches Yogurt Fresa": {
@@ -263,6 +277,16 @@ function Hero({ onOrder }: { onOrder: () => void }) {
 }
 
 function About() {
+  const [daysSinceStarted, setDaysSinceStarted] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateDays = () => setDaysSinceStarted(getDaysSinceCaffeliStarted());
+    updateDays();
+
+    const interval = window.setInterval(updateDays, 60 * 1000);
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section id="about" className="px-4 sm:px-6 lg:px-10 py-28">
       <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -281,16 +305,29 @@ function About() {
           <h2 className="mt-5 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-forest-deep">
             Una Cafetería <em className="italic font-normal">local</em> nacida del detalle.
           </h2>
-          <p className="mt-7 text-muted-foreground leading-relaxed max-w-lg">asdasdas</p>
-          <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">asdasdasdas</p>
+          <p className="mt-7 text-muted-foreground leading-relaxed max-w-lg"> 
+Somos una cafetería y pasteleria hecha con amor por lo que hacemos, con orgullo por nuestras raíces y con la inquietud de seguir creando algo nuevo.
+
+Caffeli es nuestra manera de entender el café: como un punto de encuentro, como una pausa, como una experiencia y como parte de esos pequeños momentos que terminan convirtiéndose en recuerdos.
+
+</p>
+          <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">Gracias por hacernos parte de tu historia.
+
+Bienvenido a Caffeli.
+Aquí siempre hay un lugar para ti.</p>
           <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
             {[
               { n: "12+", l: "Años creando" },
-              { n: "n", l: "Pedidos al año" },
+              {
+                n: daysSinceStarted?.toLocaleString("es-MX") ?? "...",
+                l: "Días haciendo felices a nuestros clientes",
+              },
               { n: "100%", l: "Artesanal" },
             ].map((s) => (
               <div key={s.l}>
-                <div className="font-serif text-3xl text-forest-deep">{s.n}</div>
+                <div className="font-sans text-3xl font-semibold tabular-nums tracking-normal text-forest-deep">
+                  {s.n}
+                </div>
                 <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
               </div>
             ))}
@@ -771,28 +808,39 @@ function NuestroCafe() {
         </ScrollReveal>
 
         {/* Perfil de la Taza */}
-        <ScrollReveal>
-          <div className="bg-forest text-primary-foreground rounded-[2rem] p-8 sm:p-14 lg:p-16 mb-16 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
-            <div className="relative max-w-3xl">
-              <span className="text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
-                Perfil Sensorial
-              </span>
-              <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">
-                Perfil de la Taza
-              </h3>
-              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
-                {perfilItems.map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/70 shrink-0" />
-                    <span className="text-sm text-primary-foreground/90">{item}</span>
-                  </div>
-                ))}
+    <ScrollReveal>
+      <div className="bg-forest text-primary-foreground rounded-[2rem] p-8 sm:p-14 lg:p-16 mb-16 relative overflow-hidden">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+        
+        <div className="relative max-w-3xl">
+          <span className="text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
+            Perfil Sensorial
+          </span>
+          <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">
+            Perfil de la Taza
+          </h3>
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+            {perfilItems.map((item) => (
+              <div key={item} className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/70 shrink-0" />
+                <span className="text-sm text-primary-foreground/90">{item}</span>
               </div>
-            </div>
+            ))}
           </div>
-        </ScrollReveal>
+        </div>
+
+        {/* Sello PNG posicionado en la esquina inferior derecha */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-10">
+          <img
+            src={SelloBlanco} 
+            alt="Sello Caffeli"
+            className="w-full h-full object-contain opacity-90"
+          />
+        </div>
+      </div>
+    </ScrollReveal>
 
         {/* Presentaciones */}
         <ScrollReveal>
