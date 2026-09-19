@@ -26,6 +26,8 @@ import {
   Flame,
   Award,
   Sprout,
+  Menu,
+  X,
 } from "lucide-react";
 
 import heroCake from "@/assets/hero-cake.jpg";
@@ -68,7 +70,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Caffeli es una pastelería boutique que crea pasteles artesanales con ingredientes premium. Reserva, compra o recoge en tienda.",
+          "Caffeli es una pastelería que crea pasteles artesanales con ingredientes premium. Reserva, compra o recoge en tienda.",
       },
       { property: "og:title", content: "Caffeli — Cafetería, Pastelería y Café de Especialidad" },
       {
@@ -129,7 +131,7 @@ function Index() {
   const [orderOpen, setOrderOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Nav onOrder={() => setOrderOpen(true)} />
+      <Nav />
       <Hero onOrder={() => setOrderOpen(true)} />
       <About />
       <Custom onOrder={() => setOrderOpen(true)} />
@@ -143,7 +145,8 @@ function Index() {
   );
 }
 
-function Nav({ onOrder }: { onOrder: () => void }) {
+function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const links = [
     { label: "Nosotros", href: "#about" },
     { label: "Catálogo", href: "#cakes" },
@@ -151,26 +154,58 @@ function Nav({ onOrder }: { onOrder: () => void }) {
     { label: "Cafeterías", href: "#cafeterias" },
     { label: "Nuestro Café", href: "#coffee" },
   ];
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#" className="font-serif text-2xl tracking-tight text-forest-deep">
-          <span className="text-forest">.</span>
-        </a>
-        <nav className="flex min-w-0 flex-1 items-center justify-center gap-5 overflow-x-auto px-4 text-sm text-muted-foreground sm:gap-7 lg:gap-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 min-h-20 flex items-center justify-between gap-4">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-5 overflow-x-auto px-4 text-sm text-muted-foreground md:flex sm:gap-7 lg:gap-10">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="shrink-0 whitespace-nowrap hover:text-forest transition-colors">
               {l.label}
             </a>
           ))}
         </nav>
-        <button
-          onClick={onOrder}
-          className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
+        <a
+          href="#cakes"
+          className="hidden md:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
         >
-          Ordenar
+          Ver pasteles
+        </a>
+        <button
+          type="button"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-forest-deep hover:bg-forest/5 md:hidden"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
+      {menuOpen && (
+        <div className="border-t border-border/60 bg-background/95 px-4 pb-4 md:hidden">
+          <nav className="flex flex-col gap-1 pt-3 text-sm text-muted-foreground">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={closeMenu}
+                className="rounded-lg px-3 py-3 hover:bg-forest/5 hover:text-forest"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#cakes"
+              onClick={closeMenu}
+              className="mt-2 rounded-full bg-accent px-5 py-3 text-sm text-accent-foreground hover:opacity-90"
+            >
+              Ver pasteles
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -184,7 +219,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
             <img
               src={CaffeliNBG}
               alt="Caffeli — Coffee House"
-              className="h-44 sm:h-58 lg:h-62 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
+              className="h-64 sm:h-80 lg:h-96 w-auto object-contain rounded-2xl shadow-[0_20px_50px_-20px_rgba(40,60,40,0.3)] mb-8"
             />
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cream mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Artesanal & Premium
@@ -200,7 +235,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
             </h1>
             <p className="mt-8 max-w-md text-cream leading-relaxed">
               Elaborados diariamente con ingredientes de la más alta calidad. Descubre nuestra
-              colección de postres boutique diseñados para deleitar.
+              colección de postres y pasteles diseñados para deleitar.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <button
@@ -940,18 +975,23 @@ function NuestroCafe() {
 function Testimonials() {
   const t = [
     {
-      q: "El pastel de nuestra boda fue una obra de arte. Cada invitado lo recuerda.",
-      a: "Mariana & Diego",
-      r: "Boda · 2025",
+      q: "Excelente! un día llegamos ya cuando estaban cerrando y aún así nos atendieron para llevar, super lindos. El lugar es muy agradable cómodo y las personas en verdad amables.",
+      a: "Aria Foz",
+      r: "Reseña Google",
     },
     {
-      q: "La atención al detalle es impecable. Caffeli convirtió el cumpleaños de mi hija en magia.",
-      a: "Sofía Aguilar",
-      r: "Cliente recurrente",
+      q: "Si estás de visita o paso por ciudad Jiménez, este lugar es para ti. No habrá mas opciones de café (zona centro), más que en oxxo y alsuper. Así que si lo tuyo es un buen café de especialidad, te comparto el lugar perfecto!",
+      a: "Barush Pantoja",
+      r: "Reseña Google",
     },
     {
-      q: "Sabores limpios, presentación de revista. Es nuestra pastelería y cafeteria favorita en la ciudad.",
-      a: "Juan Holguin",
+      q: "Fantástica cafeterín en Jiménez! Un lugar genial par tomar unos paninis y un café, Además tiene muy buen ambiente!",
+      a: "Kevin Sweeney",
+      r: "Reseña Google",
+    },
+    {
+      q: "Buen lugar en Jiménez para una tarde de café.",
+      a: "Carlos Maria de Jesús",
       r: "Reseña Google",
     },
   ];
@@ -1033,13 +1073,20 @@ function Footer() {
             <ul className="space-y-3 text-sm text-primary-foreground/85">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                Av. Juárez 321-Local 1, Abraham González, 33983 José Mariano Jiménez, Chih.
+                <a
+                  href="https://maps.app.goo.gl/cUzgLWNuWwaEndqRA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 decoration-primary-foreground/50 hover:text-primary-foreground hover:decoration-primary-foreground"
+                >
+                  Av. Juárez 321-Local 1, Abraham González, 33983 José Mariano Jiménez, Chih.
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4" /> 629-542-2752
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4" /> hola@caffeli.mx
+                <Mail className="w-4 h-4" /> mxcaffeli@gmail.com
               </li>
             </ul>
           </div>
