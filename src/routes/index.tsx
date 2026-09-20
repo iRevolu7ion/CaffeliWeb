@@ -284,7 +284,7 @@ function Hero({ onOrder }: { onOrder: () => void }) {
           {
             icon: Leaf,
             t: "Ingredientes Frescos",
-            d: "Seleccionados diariamente desde productores locales, desde vainilla de Madagascar hasta el cacao belga de origen único.",
+            d: "Seleccionados diariamente y preparados con los más altos estándares de calidad.",
           },
           {
             icon: Cake,
@@ -985,7 +985,7 @@ function Testimonials() {
       r: "Reseña Google",
     },
     {
-      q: "Fantástica cafeterín en Jiménez! Un lugar genial par tomar unos paninis y un café, Además tiene muy buen ambiente!",
+      q: "Fantástica cafetería en Jiménez! Un lugar genial par tomar unos paninis y un café, Además tiene muy buen ambiente!",
       a: "Kevin Sweeney",
       r: "Reseña Google",
     },
