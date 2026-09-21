@@ -83,7 +83,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const WHATSAPP = "https://wa.me/526291239239?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
+const WHATSAPP = "https://wa.me/526291016652?text=Hola%20Caffeli%2C%20quiero%20hacer%20un%20pedido";
 
 const CAFFELI_START_DATE = new Date(2014, 1, 1);
 
@@ -578,7 +578,7 @@ function CakesOfTheDay(_props: { onOrder: () => void }) {
 
                     <div className="grid grid-cols-1 gap-2">
                       <a
-                        href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${c.name}? ¿Qué tamaños tienen disponibles? Pasaría a recogerlo en sucursal.`)}`}
+                        href={`https://wa.me/526291016652?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${c.name}? ¿Qué tamaños tienen disponibles? Pasaría a recogerlo en sucursal.`)}`}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center gap-2 rounded-full border border-forest text-forest px-4 py-2.5 text-xs hover:bg-forest/5 transition-colors"
@@ -937,7 +937,7 @@ function NuestroCafe() {
                               {v.mpUrl ? "Comprar" : "Próximamente"}
                             </a>
                             <a
-                              href={`https://wa.me/526291239239?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${prod.tipo} de ${v.size}? Pasaría a recogerlo en sucursal.`)}`}
+                              href={`https://wa.me/526291016652?text=${encodeURIComponent(`Hola Caffeli, ¿hay disponibilidad de ${prod.tipo} de ${v.size}? Pasaría a recogerlo en sucursal.`)}`}
                               target="_blank"
                               rel="noreferrer"
                               className="inline-flex items-center justify-center gap-1.5 rounded-full border border-forest text-forest px-3 py-1.5 text-[11px] hover:bg-forest/5 transition-colors"
